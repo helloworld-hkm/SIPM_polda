@@ -17,12 +17,15 @@ class Filters extends BaseConfig
      *
      * @var array
      */
-    public $aliases = [
+    public $aliases = [ 
         'csrf'          => CSRF::class,
         'toolbar'       => DebugToolbar::class,
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
+        'login' => \Myth\Auth\Filters\LoginFilter::class, 
+        'role' => \Myth\Auth\Filters\RoleFilter::class, 
+        'permission' => \Myth\Auth\Filters\PermissionFilter::class,
     ];
 
     /**
@@ -36,6 +39,9 @@ class Filters extends BaseConfig
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',
+            // 'login'
+            // 'login'
+            'csrf',
         ],
         'after' => [
             'toolbar',
@@ -64,5 +70,8 @@ class Filters extends BaseConfig
      *
      * @var array
      */
-    public $filters = [];
+    public $filters = [
+        'login' =>['before' => ['admin','user','home']],
+        
+    ];
 }
