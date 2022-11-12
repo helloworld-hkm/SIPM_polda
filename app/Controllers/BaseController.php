@@ -35,7 +35,7 @@ class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = ['auth'];
+    protected $helpers = ['Myth\Auth\auth'];
 
     /**
      * Constructor.
