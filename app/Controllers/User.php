@@ -9,8 +9,16 @@ class User extends BaseController
         return view('user/home');
     }
 
-    // public function user()
-    // {
-    //     return view('auth/index');
-    // }
+    public function tentang()
+    {
+        return view('user/profile');
+    }
+    public function pengguna()
+    {
+        return view('user/pengguna');
+    }
+    public function pengaduan()
+    {
+        return view('user/pengaduan');
+    }
 }

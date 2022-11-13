@@ -53,8 +53,7 @@
 
             <!-- <h1 class="logo"><a href="#">s<span></span></a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
-            <a href="index.html" class="logo"><img src="<?php echo base_url() ?>/assets/img/polda.ico" width="40x" height="40px"></a>
-
+            <a href="/" class="logo"><img src="<?php echo base_url() ?>/assets/img/polda.ico" width="40x" height="40px"> Polda Jawa Tengah</a>
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto active" href="#hero">Beranda</a></li>
@@ -70,26 +69,26 @@
 
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center">
-       
-    <video class="hero"  autoplay loop muted plays-inline style="position:absolute;right:0;bottom:0;z-index:-100;" >
-            <source src="<?=base_url()?>/assets/img/bacd.mp4">
-    </video>
+
+        <video class="hero" autoplay loop muted plays-inline style="position:absolute;right:0;bottom:0;z-index:-100;">
+            <source src="<?= base_url() ?>/assets/img/bacd.mp4">
+        </video>
         <div class="container" data-aos="zoom-out" data-aos-delay="100">
-       
-            <h1>Selamat Datang Di <span>Aplikasi Pengaduan Masyarakat</span></h1>
+
+            <h1>Selamat Datang Di <span> <br> Pengaduan Masyarakat</span></h1>
             <h2 style="color:#ffffff">POLDA JAWA TENGAH</h2>
-                <div class="d-flex">
-                    <a href="<?=base_url()?>/user" class="btn-get-started scrollto">Login</a>
-                </div>
+            <div class="d-flex">
+                <a href="<?= base_url() ?>/user" class="btn-get-started scrollto">Login</a>
+            </div>
         </div>
-     
-        
+
+
     </section><!-- End Hero -->
- 
+
     <main id="main">
 
 
-   
+
         <!-- ======= Portfolio Section ======= -->
         <section id="visimisi" class="visimisi">
             <div class="container" data-aos="fade-up">
@@ -153,7 +152,7 @@
                             <i class="bx bx-envelope"></i>
                             <h3>Email Kami</h3>
                             <p>bidti_jateng@polri.go.id</p>
-                         
+
                         </div>
                     </div>
 
@@ -188,29 +187,29 @@
         <div class="footer-top">
             <div class="container">
                 <div class="row">
-                <div class="col-lg-7 col-md-5 footer-links">
+                    <div class="col-lg-7 col-md-5 footer-links">
                         <h4>Useful Links</h4>
                         <ul>
                             <li><i class="bx bx-chevron-right"></i> <a href="#hero">Beranda</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#visimisi">Fasilitas</a></li>
-                        
+
                             <li><i class="bx bx-chevron-right"></i> <a href="#contact">Kontak</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-1 col-md-2 footer-contact " style="margin-right:30px ;">
-                    <h3><img src="<?php echo base_url() ?>/assets/img/polda.ico"  width="100px" height="100px"></h3>
+                        <h3><img src="<?php echo base_url() ?>/assets/img/polda.ico" width="100px" height="100px"></h3>
                     </div>
                     <div class="col-lg-3 col-md-3 footer-contact">
-                       
+
                         <p>
                             Jl. Pahlawan No. 1 Semarang Jateng, Indonesia <br>
                             <strong>Telpon:</strong> 021 – 83713168<br>
                             <strong>Email:</strong> bidti_jateng@polri.go.id<br>
-                            <strong>Website:</strong>   <a href="https://jateng.polri.go.id">https://jateng.polri.go.id</a>
+                            <strong>Website:</strong> <a href="https://jateng.polri.go.id">https://jateng.polri.go.id</a>
                         </p>
                     </div>
 
-                    
+
 
                 </div>
             </div>
@@ -225,7 +224,7 @@
                 <!-- You can delete the links only if you purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
                 <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
-                Designed by &copy; Anndrzq <?= date('Y'); ?></a>
+                Designed by &copy; POLDA JATENG <?= date('Y'); ?></a>
             </div>
         </div>
     </footer><!-- End Footer -->

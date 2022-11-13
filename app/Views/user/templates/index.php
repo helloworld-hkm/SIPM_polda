@@ -12,13 +12,13 @@
     <title>POLDA JATENG- Home</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="<?=base_url()?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="<?=base_url()?>/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -31,7 +31,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
       
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?=base_url('admin')?>">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?=base_url('user')?>">
             <img src="<?php echo base_url() ?>/assets/img/polda.ico" width="40x" height="40px">
                 <div class="sidebar-brand-text mx-3">Pengaduan Masyarakat </div>
             </a>
@@ -41,7 +41,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="<?=base_url('admin')?>">
+                <a class="nav-link" href="<?=base_url('user')?>">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -52,7 +52,7 @@
    Manajemen
 </div>
 <li class="nav-item">
-    <a class="nav-link" href="<?=base_url('tentang')?>">
+    <a class="nav-link" href="<?=base_url('user/tentang')?>">
         <i class="fas fa-fw fa-user"></i>
         <span>Profile</span></a>
 </li>
@@ -67,7 +67,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-    <a class="nav-link" href="<?=base_url('tentang')?>">
+    <a class="nav-link" href="<?=base_url('user/pengaduan')?>">
         <i class="fas fa-fw fa-clipboard"></i>
         <span>Pengaduan</span></a>
 </li>
@@ -192,14 +192,14 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?=base_url()?>/vendor/jquery/jquery.min.js"></script>
+    <script src="<?=base_url()?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<?=base_url()?>/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="<?=base_url()?>/js/sb-admin-2.min.js"></script>
 
 </body>
 
