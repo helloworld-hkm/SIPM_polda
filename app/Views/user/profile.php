@@ -20,7 +20,7 @@
                             <li class="list-group-item"><i class="fa fa-user"></i> username</li>
                             <li class="list-group-item"><i class="fa fa-envelope"></i> exif_thumbnail</li>
                             <li class="list-group-item"><i class="fa fa-calendar"></i> Aktif sejak. <?= date('d M Y'); ?></li>
-                            <li class="list-group-item"><i class="fa fa-chart-bar"></i> Jumlah pengaduan : </li>
+                            <li class="list-group-item"><i class="fa fa-chart-bar"></i> Jumlah pengaduan :vount </li>
                         </ul>
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12">
