@@ -27,23 +27,31 @@
     <div class="row">
         <div class="col-12">
 
-            <div class="card shadow">
-                <div class="card-header">
-                    <a href="/user/tambah" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Pengaduan Baru</a>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-main" id="tbl-pengaduan">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Tentang</th>
-                                    <th>Status</th>
-                                    <th>#</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
+        <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                        <a href="/user/tambah" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Pengaduan Baru</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Tentang</th>
+                                        <th>Status</th>
+                                        <th>#</th>
+                                     </tr>
+                                    </thead>
+                                    <tfoot>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Tentang</th>
+                                        <th>Status</th>
+                                        <th>#</th>
+                                     </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    <tr>
                                     <td></td>
                                     <td>a</td>
                                     <td>s
@@ -65,16 +73,12 @@
 
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td colspan="4">
-                                        <h3 class="text-gray-900 text-center">Data belum ada.</h3>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                              
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
         </div>
     </div>

@@ -17,10 +17,10 @@
                     <div class="col-lg-8 col-md-8 col-sm-12">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item"><span class="badge badge-info"> 1</span></li>
-                            <li class="list-group-item "><i class="fa fa-user"></i><?= user()->username; ?></li>
-                            <li class="list-group-item"><i class="fa fa-envelope"></i> exif_thumbnail</li>
-                            <li class="list-group-item"><i class="fa fa-calendar"></i> Aktif sejak. <?= date('d M Y'); ?></li>
-                            <li class="list-group-item"><i class="fa fa-chart-bar"></i> Jumlah pengaduan :vount </li>
+                            <li class="list-group-item "><i class="fa fa-user mr-2 "></i><?= user()->username; ?></li>
+                            <li class="list-group-item"><i class="fa fa-envelope mr-1"></i> <?=$user->email?></li>
+                            <li class="list-group-item"><i class="fa fa-calendar mr-1"></i> terdaftar sejak. <?php $date=date_create($user->created_at); echo(date_format($date,"d F Y H:i:s")) ?></li>
+                            <li class="list-group-item"><i class="fa fa-chart-bar mr-1"></i> Jumlah pengaduan :vount </li>
                         </ul>
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12">

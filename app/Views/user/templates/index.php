@@ -20,7 +20,7 @@
     <!-- Custom styles for this template-->
       <link href="<?= base_url('css/custom.css'); ?>" rel="stylesheet">
     <link href="<?=base_url()?>/css/sb-admin-2.min.css" rel="stylesheet">
-     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/vendor/datatables/dataTables.bootstrap4.min.css">
+     <link rel="stylesheet" type="text/css" href="<?=base_url(); ?>/vendor/datatables/dataTables.bootstrap4.min.css">
 </head>
 
 <body id="page-top">
@@ -205,8 +205,8 @@
     <script src="<?= base_url(); ?>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="<?= base_url(); ?>/js/demo/datatables-demo.js"></script>
-
+    <script src="<?= base_url(); ?>/sbassets/js/demo/datatables-demo.js"></script>
+    <?= $this->renderSection('additional-js') ?>
 </body>
 
 </html>

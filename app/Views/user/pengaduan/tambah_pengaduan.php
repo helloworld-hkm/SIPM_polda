@@ -22,10 +22,10 @@
 
             <div class="card shadow">
                 <div class="card-header">
-                    <a href="/pengaduan">&laquo; Kembali ke daftar pengaduan</a>
+                    <a href="/user/pengaduan">&laquo; Kembali ke daftar pengaduan</a>
                 </div>
                 <div class="card-body">
-                    <form action="">
+                    <form action="<?= base_url('/user/simpanPengaduan')?> " method="post">
                         <?= csrf_field(); ?>
                         <div class="row">
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
@@ -50,12 +50,12 @@
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="nama_pengadu" id="nama_pengadu2">
+                                        <input class="form-check-input" type="radio" name="nama_pengadu" id="nama_pengadu2" value="2">
                                         <label class="form-check-label" for="nama_pengadu2">
                                             <span class="text-gray-800">Gunakan nama sendiri</span>
                                         </label>
                                     </div>
-                                    <input type="text" class="form-control pengadu" value="" readonly>
+                                    <input type="text" class="form-control pengadu" name="pengadu" value="" >
                                 </div>
                                 <div class="form-group">
                                     <label>Upload foto bukti</label>

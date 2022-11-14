@@ -6,7 +6,18 @@ class Admin extends BaseController
 {
     public function index()
     {
-        return view('admin/home');
+        //  $userlogin=user()->username;
+        // $builder = $this->db->table('user');
+        // $builder->select('username,email,created_at');
+        // $this->builder->where('username',$userlogin);
+        // $query = $this->builder->get();
+       
+        $data=[
+            // 'user'=> $query->getResult(),
+            'title'=>'Home'
+        ];
+     
+        return view('admin/home',$data);
     }
     public function tentang()
     {

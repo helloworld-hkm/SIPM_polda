@@ -19,7 +19,7 @@
 
             <div class="card shadow card-detail">
                 <div class="card-header">
-                    <a href="/pengaduan">&laquo; Kembali ke daftar pengaduan</a>
+                    <a href="/user/pengaduan">&laquo; Kembali ke daftar pengaduan</a>
                 </div>
                 <div class="card-header">
                     <h3 class="mb-0 text-gray-900"></h3>
