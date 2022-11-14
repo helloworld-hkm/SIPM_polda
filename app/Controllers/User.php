@@ -62,7 +62,7 @@ class User extends BaseController
             'tanggal_pengaduan'=>$date,
             'status' =>'belum diproses',
             'bukti'=> 'dummy.jpg'
-        ];
+        ]; 
         $this->pengaduan->save($dataPengaduan);
         return redirect()->to('user/pengaduan/tambah_pengaduan');
     }

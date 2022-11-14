@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Nov 2022 pada 18.23
--- Versi server: 10.4.14-MariaDB
--- Versi PHP: 7.4.11
+-- Waktu pembuatan: 14 Nov 2022 pada 22.04
+-- Versi server: 10.4.21-MariaDB
+-- Versi PHP: 7.4.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -94,6 +94,7 @@ INSERT INTO `auth_groups_users` (`group_id`, `user_id`) VALUES
 (1, 3),
 (1, 4),
 (1, 4),
+(1, 5),
 (2, 2),
 (2, 3);
 
@@ -143,7 +144,14 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (24, '::1', 'admin@gmail.com', 3, '2022-11-14 09:11:14', 1),
 (25, '::1', 'ganda@gmail.com', 2, '2022-11-14 09:12:12', 1),
 (26, '::1', 'admin@gmail.com', 3, '2022-11-14 09:31:06', 1),
-(27, '::1', 'ganda@gmail.com', 2, '2022-11-14 09:56:54', 1);
+(27, '::1', 'ganda@gmail.com', 2, '2022-11-14 09:56:54', 1),
+(28, '::1', 'hakimastina@gmail.com', 5, '2022-11-14 11:33:58', 1),
+(29, '::1', 'ganda@gmail.com', 2, '2022-11-14 11:35:54', 1),
+(30, '::1', 'Asstro', NULL, '2022-11-14 12:48:16', 0),
+(31, '::1', 'gandagunawan36@gmail.com', 4, '2022-11-14 12:48:25', 1),
+(32, '::1', 'ganda@gmail.com', 2, '2022-11-14 12:51:33', 1),
+(33, '::1', 'gandagunawan36@gmail.com', 4, '2022-11-14 14:48:47', 1),
+(34, '::1', 'ganda@gmail.com', 2, '2022-11-14 14:51:55', 1);
 
 -- --------------------------------------------------------
 
@@ -231,6 +239,30 @@ INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `pengaduan`
+--
+
+CREATE TABLE `pengaduan` (
+  `id` int(11) NOT NULL,
+  `nama_pengadu` varchar(30) NOT NULL,
+  `perihal` varchar(30) NOT NULL,
+  `detail` text NOT NULL,
+  `tanggal_pengaduan` datetime NOT NULL,
+  `status` char(15) NOT NULL,
+  `bukti` char(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `pengaduan`
+--
+
+INSERT INTO `pengaduan` (`id`, `nama_pengadu`, `perihal`, `detail`, `tanggal_pengaduan`, `status`, `bukti`) VALUES
+(4, 'anonym', 'sda', 'asdad', '2022-11-14 02:59:26', 'belum diproses', 'dummy.jpg'),
+(5, 'soepomo', 'sdfsd', 'sdfsdfsdfdsfsfsdfsdfghghghghggh', '2022-11-14 03:01:01', 'belum diproses', 'dummy.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `users`
 --
 
@@ -259,7 +291,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (2, 'ganda@gmail.com', 'Ada', '$2y$10$ozBo6fAWJRuLNewK3h86o.lk1P3srbVwrhT8FV5LdIRWaPw8VRDrm', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-11-13 02:41:20', '2022-11-13 02:41:20', NULL),
 (3, 'admin@gmail.com', 'Adm', '$2y$10$OcIcHfJU/47P7VkdKRALse9xAKwlG1YiBiPb4q3Z7/k0gfAe/C.aO', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-11-13 02:49:54', '2022-11-13 02:49:54', NULL),
-(4, 'gandagunawan36@gmail.com', 'Asstro', '$2y$10$m5Bcb3lg2Xdj/ppMlX3F2uPPlGufAR5EAZi12BbMAJGQxRcregSui', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-11-14 08:36:52', '2022-11-14 08:36:52', NULL);
+(4, 'gandagunawan36@gmail.com', 'Asstro', '$2y$10$m5Bcb3lg2Xdj/ppMlX3F2uPPlGufAR5EAZi12BbMAJGQxRcregSui', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-11-14 08:36:52', '2022-11-14 08:36:52', NULL),
+(5, 'hakimastina@gmail.com', 'firman', '$2y$10$1iqJ0czUzXbo3AbXYj41GOFAfb4vpr24naKr3EQ7XmnktuV3iedEK', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-11-14 11:33:44', '2022-11-14 11:33:44', NULL);
 
 --
 -- Indexes for dumped tables
@@ -333,6 +366,12 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `pengaduan`
+--
+ALTER TABLE `pengaduan`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
@@ -360,7 +399,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT untuk tabel `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_permissions`
@@ -387,10 +426,16 @@ ALTER TABLE `migrations`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT untuk tabel `pengaduan`
+--
+ALTER TABLE `pengaduan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
