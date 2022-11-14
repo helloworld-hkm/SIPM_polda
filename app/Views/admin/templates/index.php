@@ -80,10 +80,10 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Pengaduan:</h6>
-                        <a class="collapse-item" href="buttons.html">Semua Pengaduan</a>
-                        <a class="collapse-item" href="buttons.html">Masuk</a>
-                        <a class="collapse-item" href="buttons.html">Diproses</a>
-                        <a class="collapse-item" href="cards.html">Selesai</a>
+                        <a class="collapse-item" href="<?=base_url('admin/pengaduan')?>">Semua Pengaduan</a>
+                        <a class="collapse-item" href="<?=base_url('admin/pengaduan_masuk')?>">Masuk</a>
+                        <a class="collapse-item" href="<?=base_url('admin/pengaduan_diproses')?>">Diproses</a>
+                        <a class="collapse-item" href="<?=base_url('admin/pengaduan/selesai')?>">Selesai</a>
                     </div>
                 </div>
             </li>

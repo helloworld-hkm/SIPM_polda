@@ -12,12 +12,12 @@
             <div class="card shadow px-5 py-4">
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-12">
-                        <img class="card-img-top p-2" src="/img/profile/" alt="Image profile" height="290">
+                        <img class="card-img-top p-2" src="<?= base_url() ?>/sbassets/img/undraw_profile.svg" alt="Image profile" height="290">
                     </div>
                     <div class="col-lg-8 col-md-8 col-sm-12">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item"><span class="badge badge-info"> 1</span></li>
-                            <li class="list-group-item"><i class="fa fa-user"></i> username</li>
+                            <li class="list-group-item "><i class="fa fa-user"></i><?= user()->username; ?></li>
                             <li class="list-group-item"><i class="fa fa-envelope"></i> exif_thumbnail</li>
                             <li class="list-group-item"><i class="fa fa-calendar"></i> Aktif sejak. <?= date('d M Y'); ?></li>
                             <li class="list-group-item"><i class="fa fa-chart-bar"></i> Jumlah pengaduan :vount </li>

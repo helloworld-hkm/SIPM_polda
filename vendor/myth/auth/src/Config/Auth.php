@@ -16,7 +16,7 @@ class Auth extends BaseConfig
      *
      * @var string
      */
-    public $defaultUserGroup = 'user';
+    public $defaultUserGroup = 'admin';
 
     /**
      * --------------------------------------------------------------------
@@ -74,6 +74,7 @@ class Auth extends BaseConfig
      * @var array
      */
     public $views = [
+
         'login'           => 'Myth\Auth\Views\login',
         'register'        => 'Myth\Auth\Views\register',
         'forgot'          => 'Myth\Auth\Views\forgot',
@@ -186,7 +187,7 @@ class Auth extends BaseConfig
      *
      * @var string|null Name of the ActivatorInterface class
      */
-    public $requireActivation =null;
+    public $requireActivation = null;
 
     /**
      * --------------------------------------------------------------------
