@@ -1,33 +1,35 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Models\Pengaduan;
+
 class User extends BaseController
-{ 
-    protected $db,$builder;
-    public function __construct(){
+{
+    protected $db, $builder;
+    public function __construct()
+    {
 
         $this->db      = \Config\Database::connect();
         $this->builder = $this->db->table('users');
-        $this->pengaduan=new pengaduan();
+        $this->pengaduan = new pengaduan();
         $this->validation = \Config\Services::validation();
-       
     }
     public function index()
     {
-        $userlogin=user()->username;
-      
+        $userlogin = user()->username;
+
         $builder = $this->db->table('users');
         $builder->select('username,email,created_at');
-       $builder->where('username',$userlogin);
+        $builder->where('username', $userlogin);
         $query = $builder->get();
-       
-        $data=[
-            'user'=> $query->getRow(),
-            'title'=>'Home'
+
+        $data = [
+            'user' => $query->getRow(),
+            'title' => 'Home'
         ];
         // dd($data['user']);
-        return view('user/profile',$data);
+        return view('user/profile', $data);
     }
 
     public function tentang()
@@ -40,7 +42,18 @@ class User extends BaseController
     }
     public function pengaduan()
     {
-        return view('user/pengaduan/index');
+
+        // $builder    = $this->db->table('pengaduan');
+        // $builder->orderBy('id', 'ASC');
+        // $query      = $builder->get()->getResult();
+        // $data['pengaduan'] = $query;
+        // $this->builder = $this->db->table('pengaduan');
+        // $this->builder->select('*');
+        // $this->builder->where('id', user()->id);
+        // $this->query = $this->builder->get();
+        // $data['pengaduan'] = $this->query->getRowArray();
+        $data['title'] = 'Pengaduan';
+        return view('user/pengaduan/index', $data);
     }
 
     public function tambah()
@@ -49,7 +62,7 @@ class User extends BaseController
             'validation' => $this->validation,
         ];
 
-        return view('user/pengaduan/tambah_pengaduan',$data);
+        return view('user/pengaduan/tambah_pengaduan', $data);
     }
     public function simpanPengaduan()
     {
@@ -84,26 +97,26 @@ class User extends BaseController
         }
 
         $images = $this->request->getFileMultiple('images');
-        $jumlahFile = count($images); 
+        $jumlahFile = count($images);
         if ($jumlahFile > 3) { // jika jumlah file melebihi aturan (3)
             session()->setFlashdata('err-files', '<span class="text-danger">Jumlah file yang anda upload melebihi aturan.</span>');
             return redirect()->to('/user/tambah');
         }
 
-        if ($this->request->getPost('nama_pengadu')=='anonym') {
-           $nama_pengadu=$this->request->getPost('nama_pengadu');
-        }else{
-            $nama_pengadu=$this->request->getPost('pengadu');
+        if ($this->request->getPost('nama_pengadu') == 'anonym') {
+            $nama_pengadu = $this->request->getPost('nama_pengadu');
+        } else {
+            $nama_pengadu = $this->request->getPost('pengadu');
         }
-    $date=date("Y/m/d h:i:s");
+        $date = date("Y/m/d h:i:s");
         $dataPengaduan = [
-            'perihal'=>$this->request->getPost('judul_pengaduan'),
-            'detail'=>$this->request->getPost('isi_pengaduan'),
-            'nama_pengadu'=>$nama_pengadu,
-            'tanggal_pengaduan'=>$date,
-            'status' =>'belum diproses',
-            'bukti'=> 'dummy.jpg'
-        ]; 
+            'perihal' => $this->request->getPost('judul_pengaduan'),
+            'detail' => $this->request->getPost('isi_pengaduan'),
+            'nama_pengadu' => $nama_pengadu,
+            'tanggal_pengaduan' => $date,
+            'status' => 'belum diproses',
+            'bukti' => 'dummy.jpg'
+        ];
         $this->pengaduan->save($dataPengaduan);
         return redirect()->to('user/pengaduan/tambah_pengaduan');
     }

@@ -18,18 +18,46 @@
                 <div class="card shadow">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-main" id="tbl-users">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Profile</th>
                                         <th>Nama</th>
+                                        <th>Profil</th>
                                         <th>Status</th>
-                                        <th>#</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Nama</th>
+                                        <th>Profil</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </tfoot>
                                 <tbody>
-                                    <!-- DataTables Server Side -->
+                                    <tr>
+                                        <td>a</td>
+                                        <td>a</td>
+                                        <td>s </td>
+                                        <td>
+                                            <div class="dropdown show">
+                                                <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Action
+                                                </a>
+
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                    <a href="/user/detail" class="dropdown-item">Detail</a>
+
+                                                    <a href="/user/ubah" class="dropdown-item">Ubah</a>
+
+
+                                                </div>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
                                 </tbody>
                             </table>
                         </div>

@@ -11,32 +11,41 @@ class Admin extends BaseController
         // $builder->select('username,email,created_at');
         // $this->builder->where('username',$userlogin);
         // $query = $this->builder->get();
-       
-        $data=[
+
+        $data = [
             // 'user'=> $query->getResult(),
-            'title'=>'Home'
+            'title' => 'POLDA JATENG - Home'
         ];
-     
-        return view('admin/home',$data);
+
+        return view('admin/home', $data);
     }
     public function tentang()
     {
-        return view('admin/profile');
+        $data['title'] = 'POLDA JATENG - Profile';
+        return view('admin/profile', $data);
     }
     public function pengguna()
     {
-        return view('admin/kelola/index');
+        $data = [
+            // 'user'=> $query->getResult(),
+            'title' => 'POLDA JATENG - Pengguna'
+        ];
+        return view('admin/kelola/index', $data);
     }
     public function pengaduan()
     {
-        return view('admin/pengaduan/index');
+        $data = [
+            'title' => 'POLDA JATENG - Pengaduan'
+        ];
+
+        return view('admin/pengaduan/index', $data);
     }
 
     public function detail()
     {
         $data = [
             //         'user' => $this->user,
-            'title' => 'Detail Pengaduan',
+            'title' => 'POLDA JATENG - Detail Pengaduan',
             //         'data' => $this->pengaduan->find($id),
             //         'bukti' => $this->bukti->getBukti($id),
 
