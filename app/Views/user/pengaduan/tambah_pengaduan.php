@@ -25,19 +25,24 @@
                     <a href="/user/pengaduan">&laquo; Kembali ke daftar pengaduan</a>
                 </div>
                 <div class="card-body">
-                    <form action="<?= base_url('/user/simpanPengaduan')?> " method="post">
+                    <form action="<?= base_url('/user/simpanPengaduan')?> " method="post" enctype="multipart/form-data">
                         <?= csrf_field(); ?>
                         <div class="row">
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="judul">Perihal</label>
-                                    <input type="text" name="judul_pengaduan" id="judul" class="form-control " value="" autofocus>
-
+                                    <input type="text" name="judul_pengaduan" id="judul" class="form-control  <?= $validation->hasError('judul_pengaduan') ? 'is-invalid' : ''; ?>" value="<?= old('judul_pengaduan'); ?>" autofocus>
+                                    <div class="invalid-feedback">
+                                    <?= $validation->getError('judul_pengaduan'); ?>
+                                </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="isi">Jelaskan lebih rinci</label>
-                                    <textarea name="isi_pengaduan" id="isi" cols="30" rows="13" class="form-control"></textarea>
-
+                                    <textarea name="isi_pengaduan" id="isi" cols="30" rows="13" class="form-control <?= $validation->hasError('isi_pengaduan') ? 'is-invalid' : ''; ?>"><?= old('isi_pengaduan'); ?></textarea>
+                                    <div class="invalid-feedback">
+                                        <? dd($validation)?>
+                                    <?= $validation->getError('isi_pengaduan'); ?>
+                                </div>
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
@@ -55,7 +60,7 @@
                                             <span class="text-gray-800">Gunakan nama sendiri</span>
                                         </label>
                                     </div>
-                                    <input type="text" class="form-control pengadu" name="pengadu" value="" >
+                                    <input type="text" class="form-control pengadu" name="pengadu" value="<?= user()->username; ?>" readonly  >
                                 </div>
                                 <div class="form-group">
                                     <label>Upload foto bukti</label>
@@ -64,8 +69,10 @@
                                     </div>
                                     <hr>
 
-                                    <input type="file" name="images[]" id="images" class="p-1 form-control" multiple>
-
+                                    <input type="file" name="images[]" id="images" class="p-1 form-control  <?= $validation->hasError('images') ? 'is-invalid' : ''; ?>" multiple>
+                                    <div class="invalid-feedback">
+                                    <?= $validation->getError('images'); ?>
+                                </div>
                                     <?= session()->getFlashdata('err-files'); ?>
                                 </div>
                             </div>

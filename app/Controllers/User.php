@@ -10,6 +10,7 @@ class User extends BaseController
         $this->db      = \Config\Database::connect();
         $this->builder = $this->db->table('users');
         $this->pengaduan=new pengaduan();
+        $this->validation = \Config\Services::validation();
        
     }
     public function index()
@@ -44,11 +45,51 @@ class User extends BaseController
 
     public function tambah()
     {
+        $data = [
+            'validation' => $this->validation,
+        ];
 
-        return view('user/pengaduan/tambah_pengaduan');
+        return view('user/pengaduan/tambah_pengaduan',$data);
     }
     public function simpanPengaduan()
     {
+        $rules = [
+            'judul_pengaduan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Perihal pengaduan wajib diisi.'
+                ]
+            ],
+            'isi_pengaduan' => [
+                'rules' => 'required|min_length[30]',
+                'errors' => [
+                    'required' => 'Isi pengaduan wajib diisi.',
+                    'min_length' => 'Minimal 30 karakter.'
+                ]
+            ],
+            'images' => [
+                'rules' => 'uploaded[images.0]|max_size[images,1024]|is_image[images]|mime_in[images,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'uploaded' => 'Satu file wajib ada.',
+                    'max_size' => 'Anda mengupload file yang melebihi ukuran maksimal.',
+                    'is_image' => 'Anda mengupload file yang bukan gambar.',
+                    'mime_in' => 'Anda mengupload file yang bukan gambar.'
+                ]
+            ],
+        ];
+
+        if (!$this->validate($rules)) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('/user/tambah')->withInput('validation', $validation);
+        }
+
+        $images = $this->request->getFileMultiple('images');
+        $jumlahFile = count($images); 
+        if ($jumlahFile > 3) { // jika jumlah file melebihi aturan (3)
+            session()->setFlashdata('err-files', '<span class="text-danger">Jumlah file yang anda upload melebihi aturan.</span>');
+            return redirect()->to('/user/tambah');
+        }
+
         if ($this->request->getPost('nama_pengadu')=='anonym') {
            $nama_pengadu=$this->request->getPost('nama_pengadu');
         }else{
