@@ -37,43 +37,62 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>Tanggal</th>
                                     <th>Tentang</th>
                                     <th>Status</th>
-                                    <th>#</th>
+                                    <th>opsi</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
                                     <th>No</th>
+                                    <th>Tanggal</th>
                                     <th>Tentang</th>
                                     <th>Status</th>
-                                    <th>#</th>
+                                    <th>Opsi</th>
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td>a</td>
-                                    <td>s
-                                    </td>
-                                    <td>
-                                        <div class="dropdown show">
-                                            <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Action
-                                            </a>
+                                <?php $i=0;?>
+                            <?php if ($pengaduan) {?>
+                            <?php   foreach ($pengaduan as $num=> $data) {?>
+                          
+                      
+                            <tr>
+                                <td><?=$i + 1;?></td>
+                                <td><?php $date=date_create($data['tanggal_pengaduan']);?>
+                                    <?=date_format($date,"d M Y");?></td>
+                                <td><?=$data['perihal'];?></td>
+                                <td ><span class=" btn <?=$data['status']=='belum diproses'?'btn-danger':'btn-success'?> text-white"><?=$data['status'];?></span></td>
+                                <td>
+                                    <!-- <div class="dropdown show">
+                                        <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Action
+                                        </a> -->
 
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                <a href="/user/detail" class="dropdown-item">Detail</a>
+                                        <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuLink"> -->
+                                            <a href="/user/detail" class="  btn btn-primary"><i class="fa fa-eye"></i> Detail</a>
+                                            <?php if ($data['status']=='belum diproses') {?>
+                                              
+                                            <a href="/user/detail" class="  btn btn-success"><i class="fa fa-pen"></i> Edit</a>
+                                            <?php  }else {?>
+                                                     <a href="/user/detail" class="  btn btn-secondary"><i class="fa fa-pen"></i> Edit</a>
+                                          <?php  }?>
 
-                                                <a href="/user/ubah" class="dropdown-item">Ubah</a>
+                                        <!-- </div> -->
+                                    <!-- </div> -->
 
-
-                                            </div>
-                                        </div>
-
-                                    </td>
-                                </tr>
-
+                                </td>
+                            </tr>
+                            <?php   }?>
+                          <!-- end of foreach                -->
+                          <?php  } else{?>
+                            <tr>
+                                        <td colspan="4">
+                                            <h3 class="text-gray-900 text-center">Data belum ada.</h3>
+                                        </td>
+                                    </tr>
+                           <?php }?>
                             </tbody>
                         </table>
                     </div>

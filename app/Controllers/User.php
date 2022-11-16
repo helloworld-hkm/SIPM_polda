@@ -47,11 +47,12 @@ class User extends BaseController
         // $builder->orderBy('id', 'ASC');
         // $query      = $builder->get()->getResult();
         // $data['pengaduan'] = $query;
-        // $this->builder = $this->db->table('pengaduan');
-        // $this->builder->select('*');
-        // $this->builder->where('id', user()->id);
-        // $this->query = $this->builder->get();
-        // $data['pengaduan'] = $this->query->getRowArray();
+        $this->builder = $this->db->table('pengaduan');
+        $this->builder->select('*');
+        $this->builder->where('id_user', user()->id);
+        $this->query = $this->builder->get();
+        $data['pengaduan'] = $this->query->getResultArray();
+        // dd(  $data['pengaduan']);
         $data['title'] = 'Pengaduan';
         return view('user/pengaduan/index', $data);
     }
@@ -110,6 +111,7 @@ class User extends BaseController
         }
         $date = date("Y/m/d h:i:s");
         $dataPengaduan = [
+            'id_user' =>user()->id,
             'perihal' => $this->request->getPost('judul_pengaduan'),
             'detail' => $this->request->getPost('isi_pengaduan'),
             'nama_pengadu' => $nama_pengadu,

@@ -20,6 +20,7 @@
     <!-- Custom styles for this template-->
       <link href="<?= base_url('css/custom.css'); ?>" rel="stylesheet">
     <link href="<?=base_url()?>/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="<?=base_url()?>/assets/timeline.css" rel="stylesheet">
      <link rel="stylesheet" type="text/css" href="<?=base_url(); ?>/vendor/datatables/dataTables.bootstrap4.min.css">
 </head>
 
