@@ -53,13 +53,13 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <?php $i=0;?>
+                             
                             <?php if ($pengaduan) {?>
                             <?php   foreach ($pengaduan as $num=> $data) {?>
                           
                       
                             <tr>
-                                <td><?=$i + 1;?></td>
+                                <td><?=$num + 1;?></td>
                                 <td><?php $date=date_create($data['tanggal_pengaduan']);?>
                                     <?=date_format($date,"d M Y");?></td>
                                 <td><?=$data['perihal'];?></td>
@@ -76,7 +76,7 @@
                                               
                                             <a href="/user/detail" class="  btn btn-success"><i class="fa fa-pen"></i> Edit</a>
                                             <?php  }else {?>
-                                                     <a href="/user/detail" class="  btn btn-secondary"><i class="fa fa-pen"></i> Edit</a>
+                                                     <button class="  btn btn-secondary"><i class="fa fa-pen"></i> Edit</button>
                                           <?php  }?>
 
                                         <!-- </div> -->

@@ -1,0 +1,122 @@
+ERROR - 2022-11-18 00:09:08 --> Error connecting to the database: No connection could be made because the target machine actively refused it.
+
+CRITICAL - 2022-11-18 00:09:08 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it.
+
+#0 C:\xampp\htdocs\SIPM_polda\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\SIPM_polda\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\SIPM_polda\system\Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\SIPM_polda\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#4 C:\xampp\htdocs\SIPM_polda\vendor\myth\auth\src\Authentication\LocalAuthenticator.php(140): CodeIgniter\BaseModel->first()
+#5 C:\xampp\htdocs\SIPM_polda\vendor\myth\auth\src\Authentication\LocalAuthenticator.php(19): Myth\Auth\Authentication\LocalAuthenticator->validate(Array, true)
+#6 C:\xampp\htdocs\SIPM_polda\vendor\myth\auth\src\Controllers\AuthController.php(87): Myth\Auth\Authentication\LocalAuthenticator->attempt(Array, false)
+#7 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(832): Myth\Auth\Controllers\AuthController->attemptLogin()
+#8 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#9 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\SIPM_polda\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\SIPM_polda\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2022-11-18 00:30:51 --> Undefined property: App\Controllers\User::$bukti
+#0 C:\xampp\htdocs\SIPM_polda\app\Controllers\User.php(134): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 134, Array)
+#1 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(832): App\Controllers\User->simpanPengaduan()
+#2 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#3 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\SIPM_polda\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\SIPM_polda\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+ERROR - 2022-11-18 00:31:24 --> Unknown column 'img_tiga' in 'field list'
+CRITICAL - 2022-11-18 00:31:24 --> Unknown column 'img_tiga' in 'field list'
+#0 C:\xampp\htdocs\SIPM_polda\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `tb...', 0)
+#1 C:\xampp\htdocs\SIPM_polda\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `tb...')
+#2 C:\xampp\htdocs\SIPM_polda\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `tb...')
+#3 C:\xampp\htdocs\SIPM_polda\system\Database\BaseBuilder.php(1771): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tb...', Array, false)
+#4 C:\xampp\htdocs\SIPM_polda\system\Model.php(239): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\SIPM_polda\system\BaseModel.php(738): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\SIPM_polda\system\Model.php(625): CodeIgniter\BaseModel->insert(Array, false)
+#7 C:\xampp\htdocs\SIPM_polda\system\BaseModel.php(658): CodeIgniter\Model->insert(Array, false)
+#8 C:\xampp\htdocs\SIPM_polda\app\Controllers\User.php(139): CodeIgniter\BaseModel->save(Array)
+#9 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(832): App\Controllers\User->simpanPengaduan()
+#10 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#11 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\SIPM_polda\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\SIPM_polda\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#14 {main}
+ERROR - 2022-11-18 00:31:47 --> Unknown column 'created_at' in 'field list'
+CRITICAL - 2022-11-18 00:31:47 --> Unknown column 'created_at' in 'field list'
+#0 C:\xampp\htdocs\SIPM_polda\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `tb...', 0)
+#1 C:\xampp\htdocs\SIPM_polda\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `tb...')
+#2 C:\xampp\htdocs\SIPM_polda\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `tb...')
+#3 C:\xampp\htdocs\SIPM_polda\system\Database\BaseBuilder.php(1771): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tb...', Array, false)
+#4 C:\xampp\htdocs\SIPM_polda\system\Model.php(239): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\SIPM_polda\system\BaseModel.php(738): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\SIPM_polda\system\Model.php(625): CodeIgniter\BaseModel->insert(Array, false)
+#7 C:\xampp\htdocs\SIPM_polda\system\BaseModel.php(658): CodeIgniter\Model->insert(Array, false)
+#8 C:\xampp\htdocs\SIPM_polda\app\Controllers\User.php(139): CodeIgniter\BaseModel->save(Array)
+#9 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(832): App\Controllers\User->simpanPengaduan()
+#10 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#11 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\SIPM_polda\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\SIPM_polda\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#14 {main}
+ERROR - 2022-11-18 00:32:13 --> Column 'img_tiga' cannot be null
+CRITICAL - 2022-11-18 00:32:13 --> Column 'img_tiga' cannot be null
+#0 C:\xampp\htdocs\SIPM_polda\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `tb...', 0)
+#1 C:\xampp\htdocs\SIPM_polda\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `tb...')
+#2 C:\xampp\htdocs\SIPM_polda\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `tb...')
+#3 C:\xampp\htdocs\SIPM_polda\system\Database\BaseBuilder.php(1771): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tb...', Array, false)
+#4 C:\xampp\htdocs\SIPM_polda\system\Model.php(239): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\SIPM_polda\system\BaseModel.php(738): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\SIPM_polda\system\Model.php(625): CodeIgniter\BaseModel->insert(Array, false)
+#7 C:\xampp\htdocs\SIPM_polda\system\BaseModel.php(658): CodeIgniter\Model->insert(Array, false)
+#8 C:\xampp\htdocs\SIPM_polda\app\Controllers\User.php(139): CodeIgniter\BaseModel->save(Array)
+#9 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(832): App\Controllers\User->simpanPengaduan()
+#10 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#11 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\SIPM_polda\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\SIPM_polda\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#14 {main}
+ERROR - 2022-11-18 00:33:10 --> Column 'img_tiga' cannot be null
+CRITICAL - 2022-11-18 00:33:10 --> Column 'img_tiga' cannot be null
+#0 C:\xampp\htdocs\SIPM_polda\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `tb...', 0)
+#1 C:\xampp\htdocs\SIPM_polda\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `tb...')
+#2 C:\xampp\htdocs\SIPM_polda\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `tb...')
+#3 C:\xampp\htdocs\SIPM_polda\system\Database\BaseBuilder.php(1771): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tb...', Array, false)
+#4 C:\xampp\htdocs\SIPM_polda\system\Model.php(239): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\SIPM_polda\system\BaseModel.php(738): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\SIPM_polda\system\Model.php(625): CodeIgniter\BaseModel->insert(Array, false)
+#7 C:\xampp\htdocs\SIPM_polda\system\BaseModel.php(658): CodeIgniter\Model->insert(Array, false)
+#8 C:\xampp\htdocs\SIPM_polda\app\Controllers\User.php(139): CodeIgniter\BaseModel->save(Array)
+#9 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(832): App\Controllers\User->simpanPengaduan()
+#10 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#11 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\SIPM_polda\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\SIPM_polda\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#14 {main}
+CRITICAL - 2022-11-18 00:43:01 --> Call to undefined function form_open_multipart()
+#0 C:\xampp\htdocs\SIPM_polda\system\View\View.php(210): include()
+#1 C:\xampp\htdocs\SIPM_polda\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp\htdocs\SIPM_polda\system\Common.php(1089): CodeIgniter\View\View->render('user/pengaduan/...', Array, true)
+#3 C:\xampp\htdocs\SIPM_polda\app\Controllers\User.php(67): view('user/pengaduan/...', Array)
+#4 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(832): App\Controllers\User->tambah()
+#5 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#6 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\SIPM_polda\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\SIPM_polda\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#9 {main}
+ERROR - 2022-11-18 00:46:07 --> Column 'img_dua' cannot be null
+CRITICAL - 2022-11-18 00:46:07 --> Column 'img_dua' cannot be null
+#0 C:\xampp\htdocs\SIPM_polda\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `tb...', 0)
+#1 C:\xampp\htdocs\SIPM_polda\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `tb...')
+#2 C:\xampp\htdocs\SIPM_polda\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `tb...')
+#3 C:\xampp\htdocs\SIPM_polda\system\Database\BaseBuilder.php(1771): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tb...', Array, false)
+#4 C:\xampp\htdocs\SIPM_polda\system\Model.php(239): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\SIPM_polda\system\BaseModel.php(738): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\SIPM_polda\system\Model.php(625): CodeIgniter\BaseModel->insert(Array, false)
+#7 C:\xampp\htdocs\SIPM_polda\system\BaseModel.php(658): CodeIgniter\Model->insert(Array, false)
+#8 C:\xampp\htdocs\SIPM_polda\app\Controllers\User.php(141): CodeIgniter\BaseModel->save(Array)
+#9 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(832): App\Controllers\User->simpanPengaduan()
+#10 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#11 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\SIPM_polda\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\SIPM_polda\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#14 {main}

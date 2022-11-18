@@ -8,7 +8,7 @@ class bukti extends Model
 {
     protected $table = 'tbl_bukti';
     protected $useTimestamps = true;
-    protected $allowedFields = ['id', 'pengaduan_id', 'img_satu', 'img_dua', 'img_tiga', 'updated_at', 'deleted_at', 'row_status'];
+    protected $allowedFields = ['id', 'pengaduan_id', 'img_satu', 'img_dua', 'img_tiga', 'updated_at', 'deleted_at'];
 
     public function getBukti($pengaduan_id)
     { 

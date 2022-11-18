@@ -17,7 +17,7 @@
     <div class="row">
         <div class="col-12">
       
-        <ul class="sessions">
+        <!-- <ul class="sessions">
       <li class="li-diajukan">
         <div class="time">09:00 AM</div>
         <p>Laporan Diajukan</p>
@@ -31,7 +31,7 @@
         <p>Laporan Selesai</p>
       </li>
      
-    </ul>
+    </ul> -->
             <div class="card shadow card-detail">
                 <div class="card-header  ">
                     <a href="/user/pengaduan" class=" btn ml-n3 text-primary font-weight-bold "><i class="fas fa-chevron-left"></i> Kembali ke daftar pengaduan</a>
@@ -101,7 +101,7 @@
                     </div>
                     <!-- <hr> -->
                     <div class="accordion" id="accordionExample">
-  <div class="card">
+  <div class="">
     <div class="" id="headingOne">
       <h5 class="mb-0">
        

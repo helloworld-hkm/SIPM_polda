@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Pengaduan;
-
+use App\Models\bukti;
 class User extends BaseController
 {
     protected $db, $builder;
@@ -13,6 +13,7 @@ class User extends BaseController
         $this->db      = \Config\Database::connect();
         $this->builder = $this->db->table('users');
         $this->pengaduan = new pengaduan();
+        $this->bukti = new bukti();
         $this->validation = \Config\Services::validation();
     }
     public function index()
@@ -120,6 +121,35 @@ class User extends BaseController
             'bukti' => 'dummy.jpg'
         ];
         $this->pengaduan->save($dataPengaduan);
+
+        foreach ($images as $i => $img) {
+            if ($img->isValid() && !$img->hasMoved()) {
+                $files[$i] = $img->getRandomName();
+            }
+        }
+
+    
+
+        $pengaduan_id = $this->pengaduan->insertID(); // last insert id
+            $img_dua = (array_key_exists(1, $files) ? $files[1] : 'null');
+            $img_tiga = (array_key_exists(2, $files) ? $files[2] : 'null');
+
+            $this->bukti->save([
+                'pengaduan_id' => $pengaduan_id,
+                'img_satu' => $files[0],
+                'img_dua' => $img_dua,
+                'img_tiga' => $img_tiga,
+            ]);
+
+            foreach ($images as $i => $img) {
+                if ($img->isValid() && !$img->hasMoved()) {
+                    $img->move('uploads', $files[$i]);
+                }
+            }
+
+
+
+
         return redirect()->to('user/pengaduan/tambah_pengaduan');
     }
 
