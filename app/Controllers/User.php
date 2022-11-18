@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Pengaduan;
 use App\Models\bukti;
+
 class User extends BaseController
 {
     protected $db, $builder;
@@ -35,7 +36,18 @@ class User extends BaseController
 
     public function tentang()
     {
-        return view('user/profile');
+        $userlogin = user()->username;
+
+        $builder = $this->db->table('users');
+        $builder->select('username,email,created_at');
+        $builder->where('username', $userlogin);
+        $query = $builder->get();
+
+        $data = [
+            'user' => $query->getRow(),
+            'title' => 'Home'
+        ];
+        return view('user/profile', $data);
     }
     public function pengguna()
     {
@@ -112,7 +124,7 @@ class User extends BaseController
         }
         $date = date("Y/m/d h:i:s");
         $dataPengaduan = [
-            'id_user' =>user()->id,
+            'id_user' => user()->id,
             'perihal' => $this->request->getPost('judul_pengaduan'),
             'detail' => $this->request->getPost('isi_pengaduan'),
             'nama_pengadu' => $nama_pengadu,
@@ -128,24 +140,24 @@ class User extends BaseController
             }
         }
 
-    
+
 
         $pengaduan_id = $this->pengaduan->insertID(); // last insert id
-            $img_dua = (array_key_exists(1, $files) ? $files[1] : 'null');
-            $img_tiga = (array_key_exists(2, $files) ? $files[2] : 'null');
+        $img_dua = (array_key_exists(1, $files) ? $files[1] : 'null');
+        $img_tiga = (array_key_exists(2, $files) ? $files[2] : 'null');
 
-            $this->bukti->save([
-                'pengaduan_id' => $pengaduan_id,
-                'img_satu' => $files[0],
-                'img_dua' => $img_dua,
-                'img_tiga' => $img_tiga,
-            ]);
+        $this->bukti->save([
+            'pengaduan_id' => $pengaduan_id,
+            'img_satu' => $files[0],
+            'img_dua' => $img_dua,
+            'img_tiga' => $img_tiga,
+        ]);
 
-            foreach ($images as $i => $img) {
-                if ($img->isValid() && !$img->hasMoved()) {
-                    $img->move('uploads', $files[$i]);
-                }
+        foreach ($images as $i => $img) {
+            if ($img->isValid() && !$img->hasMoved()) {
+                $img->move('uploads', $files[$i]);
             }
+        }
 
 
 

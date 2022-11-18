@@ -1,100 +1,101 @@
 <?= $this->extend('admin/templates/index') ?>
 
 <?= $this->section('content'); ?>
-<section class="content">
-    <!-- Begin Page Content -->
-    <div class="container-fluid">
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-4 text-gray-900"></h1>
 
-        <?php if (session()->getFlashdata('msg')) : ?>
-            <input type="hidden" name="flash-msg" id="flash-msg" data-flash="<?= session()->getFlashdata('msg'); ?>">
-        <?php endif; ?>
-
+    <?php if (session()->getFlashdata('error-msg')) : ?>
         <div class="row">
             <div class="col-12">
+                <div class="alert alert-danger" role="alert">
+                    <?= session()->getFlashdata('error-msg'); ?>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
 
-                <!-- Page Heading -->
-                <h1 class="h3 mb-4 text-gray-900"></h1>
+    <?php if (session()->getFlashdata('msg')) : ?>
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-success" role="alert">
+                    <?= session()->getFlashdata('msg'); ?>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
 
-                <div class="card shadow">
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
+    <div class="row">
+        <div class="col-12">
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h3>Daftar Pengguna</h3>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Email</th>
+                                    <th>Username</th>
+                                    <th>opsi</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Email</th>
+                                    <th>Username</th>
+                                    <th>Opsi</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+
+                                <?php if ($pengguna) { ?>
+                                    <?php foreach ($pengguna as $num => $data) { ?>
+
+
+                                        <tr>
+                                            <td><?= $num + 1; ?></td>
+                                            <td><?= $data['email']; ?></td>
+                                            <td><?= $data['username']; ?></td>
+                                            <td>
+                                                <a href="/admin/detail" class="  btn btn-primary"><i class="fa fa-eye"></i> Detail</a>
+                                                <?php if ($data['id'] == 'belum diproses') { ?>
+
+                                                    <a href="/user/detail" class="  btn btn-success"><i class="fa fa-pen"></i> Edit</a>
+                                                <?php  } else { ?>
+                                                    <button class="  btn btn-secondary"><i class="fa fa-pen"></i> Edit</button>
+                                                <?php  } ?>
+
+                                                <!-- </div> -->
+                                                <!-- </div> -->
+
+                                            </td>
+                                        </tr>
+                                    <?php   } ?>
+                                    <!-- end of foreach                -->
+                                <?php  } else { ?>
                                     <tr>
-                                        <th>Nama</th>
-                                        <th>Profil</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>Nama</th>
-                                        <th>Profil</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </tfoot>
-                                <tbody>
-                                    <tr>
-                                        <td>a</td>
-                                        <td>a</td>
-                                        <td>s </td>
-                                        <td>
-                                            <div class="dropdown show">
-                                                <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Action
-                                                </a>
-
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a href="/user/detail" class="dropdown-item">Detail</a>
-
-                                                    <a href="/user/ubah" class="dropdown-item">Ubah</a>
-
-
-                                                </div>
-                                            </div>
-
+                                        <td colspan="4">
+                                            <h3 class="text-gray-900 text-center">Data belum ada.</h3>
                                         </td>
                                     </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
+                                <?php } ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-
             </div>
-        </div>
 
-        <div class="modal fade" id="modal-hapus" tabindex="-1" role="dialog" aria-labelledby="modal-hapusLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <form action="">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="modal-hapusLabel">Yakin ingin menghapus data?</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <span class="text-gray-900">Klik "Yakin" untuk konfirmasi hapus data berikut.</span>
-                            <?= csrf_field(); ?>
-                            <input type="hidden" name="_method" value="DELETE">
-                            <input type="hidden" name="id" id="user_id">
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-primary btn-yakin">Yakin</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
         </div>
     </div>
-    <!-- /. container-fluid -->
 
-</section>
+</div>
+
+
 <?= $this->endSection(); ?>
 
 <?= $this->section('additional-js'); ?>

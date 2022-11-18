@@ -2,14 +2,29 @@
 
 namespace App\Controllers;
 
+use App\Models\Pengaduan;
+use App\Models\bukti;
+use App\Models\user;
+
 class Admin extends BaseController
 {
+    protected $db, $builder;
+    public function __construct()
+    {
+
+        $this->db      = \Config\Database::connect();
+        $this->builder = $this->db->table('users');
+        $this->pengaduan = new pengaduan();
+        $this->bukti = new bukti();
+        $this->user = new user();
+        $this->validation = \Config\Services::validation();
+    }
     public function index()
     {
-        //  $userlogin=user()->username;
+        // $userlogin = user()->username;
         // $builder = $this->db->table('user');
         // $builder->select('username,email,created_at');
-        // $this->builder->where('username',$userlogin);
+        // $this->builder->where('username', $userlogin);
         // $query = $this->builder->get();
 
         $data = [
@@ -21,23 +36,40 @@ class Admin extends BaseController
     }
     public function tentang()
     {
-        $data['title'] = 'POLDA JATENG - Profile';
+        $userlogin = user()->username;
+        $builder = $this->db->table('user');
+        $builder->select('username,email,user,created_at');
+        $this->builder->where('username', $userlogin);
+        $query = $this->builder->get();
+        $data = [
+            'user' => $query->getRow(),
+            'title' => 'Profile'
+        ];
         return view('admin/profile', $data);
     }
+
     public function pengguna()
     {
+        $this->builder = $this->db->table('users');
+        $this->builder->select('*');
+        $this->builder->where('id', user()->id);
+        $this->query = $this->builder->get();
         $data = [
-            // 'user'=> $query->getResult(),
-            'title' => 'POLDA JATENG - Pengguna'
+            'pengguna' => $this->query->getResultArray(),
+            'title' => 'Pengguna'
         ];
+
         return view('admin/kelola/index', $data);
     }
     public function pengaduan()
     {
-        $data = [
-            'title' => 'POLDA JATENG - Pengaduan'
-        ];
-
+        $this->builder = $this->db->table('pengaduan');
+        $this->builder->select('*');
+        $this->builder->where('id_user', user()->id);
+        $this->query = $this->builder->get();
+        $data['pengaduan'] = $this->query->getResultArray();
+        // dd(  $data['pengaduan']);
+        $data['title'] = 'Pengaduan';
         return view('admin/pengaduan/index', $data);
     }
 

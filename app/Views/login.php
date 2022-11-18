@@ -16,7 +16,7 @@
 
         <div class="signin-content">
             <div class="signin-image">
-                <figure><img src="<?php echo base_url() ?>/assets/img/portfolio/pnb.png" alt="sing in image" width="100%" height="100%"></figure>
+                <figure><img src="<?php echo base_url() ?>/assets/img/auth/sigin_image.jpg" alt="sing in image" width="100%" height="100%"></figure>
             </div>
 
             <?= form_open('/auth/validasi_login', ['class' => 'signin-form']); ?>

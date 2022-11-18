@@ -51,8 +51,6 @@
     <header id="header" class="d-flex align-items-center">
         <div class="container d-flex align-items-center justify-content-between">
 
-            <!-- <h1 class="logo"><a href="#">s<span></span></a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
             <a href="/" class="logo"><img src="<?php echo base_url() ?>/assets/img/polda.ico" width="40x" height="40px"> Polda Jawa Tengah</a>
             <nav id="navbar" class="navbar">
                 <ul>
