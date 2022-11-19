@@ -52,7 +52,6 @@ class Admin extends BaseController
     {
         $this->builder = $this->db->table('users');
         $this->builder->select('*');
-        $this->builder->where('id', user()->id);
         $this->query = $this->builder->get();
         $data = [
             'pengguna' => $this->query->getResultArray(),
@@ -65,7 +64,6 @@ class Admin extends BaseController
     {
         $this->builder = $this->db->table('pengaduan');
         $this->builder->select('*');
-        $this->builder->where('id_user', user()->id);
         $this->query = $this->builder->get();
         $data['pengaduan'] = $this->query->getResultArray();
         // dd(  $data['pengaduan']);
