@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Pengaduan;
 use App\Models\bukti;
+use CodeIgniter\Database\Query;
 
 class User extends BaseController
 {
@@ -130,18 +131,15 @@ class User extends BaseController
             'nama_pengadu' => $nama_pengadu,
             'tanggal_pengaduan' => $date,
             'status' => 'belum diproses',
-            'bukti' => 'dummy.jpg'
+
         ];
         $this->pengaduan->save($dataPengaduan);
 
         foreach ($images as $i => $img) {
             if ($img->isValid() && !$img->hasMoved()) {
-                $files[$i] = $img->getRandomName();
+                $files[$i] ='bukti'.$i.'-'. user()->id.'.'.$img->guessExtension();
             }
         }
-
-
-
         $pengaduan_id = $this->pengaduan->insertID(); // last insert id
         $img_dua = (array_key_exists(1, $files) ? $files[1] : 'null');
         $img_tiga = (array_key_exists(2, $files) ? $files[2] : 'null');
@@ -159,16 +157,29 @@ class User extends BaseController
             }
         }
 
-
-
-
         return redirect()->to('user/pengaduan/tambah_pengaduan');
     }
 
-    public function detail()
+    public function detail($id)
     {
+        $data=$this->db->table('pengaduan');
+        $data->select('*');
+        $data->where('id',$id);
+        $query=$data->get();
+        
+        $bukti=$this->db->table('tbl_bukti');
+        $bukti->select('*');
+        $bukti->where('pengaduan_id',$id);
+        $query1=$bukti->get()->getRowArray();
+        // dd($query1);
+        $ex=[
+            'bukti'=> $query1,
+            'detail'=>$hasil=$query->getRow()
 
-        return view('user/pengaduan/detail');
+        ];
+        
+
+        return view('user/pengaduan/detail',$ex);
     }
     public function ubah()
     {

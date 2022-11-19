@@ -48,7 +48,7 @@
                         <div class="col-md-3">Nama Pengadu</div>
                         <div class="col-md-1 d-none d-md-block">:</div>
                         <div class="col-md-8">
-                            nama
+                            <?=$detail->nama_pengadu?>
                         </div>
                     </div>
                     <!-- <hr class="invisible"> -->
@@ -56,7 +56,7 @@
                         <div class="col-md-3">Status Pengaduan</div>
                         <div class="col-md-1 d-none d-md-block">:</div>
                         <div class="col-md-8">
-                            status pengaduan 
+                        <?=$detail->status?>
                             
                         </div>
                         
@@ -66,7 +66,7 @@
                         <div class="col-md-3">Tanggal Pengaduan</div>
                         <div class="col-md-1 d-none d-md-block">:</div>
                         <div class="col-md-8">
-                            <?= date('d M Y'); ?>
+                        <?=$detail->tanggal_pengaduan?>
                         </div>
                     </div>
                     <!-- <hr> -->
@@ -74,7 +74,7 @@
                         <div class="col-md-3">Perihal</div>
                         <div class="col-md-1 d-none d-md-block">:</div>
                         <div class="col-md-8">
-                            Judul
+                        <?=$detail->perihal?>
                         </div>
                     </div>
                     <!-- <hr> -->
@@ -82,7 +82,7 @@
                         <div class="col-md-3">Rincian</div>
                         <div class="col-md-1 d-none d-md-block">:</div>
                         <div class="col-md-8">
-                            <span class="text-justify">Isinya pengaduan</span>
+                            <span class="text-justify"> <?=$detail->detail?></span>
                         </div>
                     </div>
                     <!-- <hr> -->
@@ -90,12 +90,12 @@
                         <div class="col-md-3">Foto Bukti</div>
                         <div class="col-md-1 d-none d-md-block">:</div>
                         <div class="col-md-8">
-                            <a href="/uploads/foto_1" target="_blank"><img src="/uploads/foto1" class="img-fluid img-thumbnail" width="100"></a>
-                            <?php if (null) : ?>
-                                <a href="/uploads/foto2" target="_blank"><img src="/uploads/foto2" class="img-fluid img-thumbnail" width="100"></a>
+                            <a href="/uploads/<?=$bukti['img_satu']?>" target="_blank"><img src="/uploads/<?=$bukti['img_satu']?>" class="img-fluid img-thumbnail" width="100"></a>
+                            <?php if ($bukti['img_dua']!='null') : ?>
+                                <a href="/uploads/<?=$bukti['img_dua']?>" target="_blank"><img src="/uploads/<?=$bukti['img_dua']?>" class="img-fluid img-thumbnail" width="100"></a>
                             <?php endif; ?>
-                            <?php if (null) : ?>
-                                <a href="/uploads/foto3" target="_blank"><img src="/uploads/foto3" class="img-fluid img-thumbnail" width="100"></a>
+                            <?php if ($bukti['img_tiga']!='null') : ?>
+                                <a href="/uploads/<?=$bukti['img_tiga']?>" target="_blank"><img src="/uploads/<?=$bukti['img_tiga']?>" class="img-fluid img-thumbnail" width="100"></a>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -113,18 +113,21 @@
       <h1> Timeline Pengaduan</h1>
       <ul class="sessions">
       <li class="li-diajukan">
-        <div class="time">09:00 AM</div>
+        <div class="time">  <?=$detail->tanggal_pengaduan?></div>
         <p>Laporan Diajukan</p>
       </li>
-      <li  class="li-diproses">
-        <div class="time">09:05 AM</div>
+    <?php if ($detail->tanggal_diproses!='0000-00-00 00:00:00') {?>
+        <li  class="li-diproses">
+        <div class="time">  <?=$detail->tanggal_diproses?></div>
         <p>Laporan Diproses </p>
       </li>
+    <?php }?>
+    <?php if ($detail->tanggal_selesai!='0000-00-00 00:00:00') {?>
       <li  class="li-selesai">
         <div class="time">09:30 AM</div>
         <p>Laporan Selesai</p>
       </li>
-     
+      <?php }?>
     </ul>
       </div>
     </div>
