@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Nov 2022 pada 22.04
--- Versi server: 10.4.21-MariaDB
--- Versi PHP: 7.4.23
+-- Waktu pembuatan: 19 Nov 2022 pada 13.42
+-- Versi server: 10.4.14-MariaDB
+-- Versi PHP: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -151,7 +151,15 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (31, '::1', 'gandagunawan36@gmail.com', 4, '2022-11-14 12:48:25', 1),
 (32, '::1', 'ganda@gmail.com', 2, '2022-11-14 12:51:33', 1),
 (33, '::1', 'gandagunawan36@gmail.com', 4, '2022-11-14 14:48:47', 1),
-(34, '::1', 'ganda@gmail.com', 2, '2022-11-14 14:51:55', 1);
+(34, '::1', 'ganda@gmail.com', 2, '2022-11-14 14:51:55', 1),
+(35, '::1', 'ganda@gmail.com', 2, '2022-11-15 00:04:41', 1),
+(36, '::1', 'ganda@gmail.com', 2, '2022-11-16 12:53:55', 1),
+(37, '::1', 'ganda@gmail.com', 2, '2022-11-16 22:05:22', 1),
+(38, '::1', 'ganda@gmail.com', 2, '2022-11-18 00:09:54', 1),
+(39, '::1', 'ganda@gmail.com', 2, '2022-11-19 02:54:20', 1),
+(40, '::1', 'gandagunawan36@gmail.com', 4, '2022-11-19 04:22:10', 1),
+(41, '::1', 'gandagunawan36@gmail.com', 4, '2022-11-19 05:37:41', 1),
+(42, '::1', 'gandagunawan36@gmail.com', 4, '2022-11-19 05:39:24', 1);
 
 -- --------------------------------------------------------
 
@@ -244,21 +252,69 @@ INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`
 
 CREATE TABLE `pengaduan` (
   `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `nama_pengadu` varchar(30) NOT NULL,
   `perihal` varchar(30) NOT NULL,
   `detail` text NOT NULL,
   `tanggal_pengaduan` datetime NOT NULL,
-  `status` char(15) NOT NULL,
-  `bukti` char(30) NOT NULL
+  `tanggal_diproses` datetime NOT NULL,
+  `tanggal_selesai` datetime NOT NULL,
+  `status` char(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `pengaduan`
 --
 
-INSERT INTO `pengaduan` (`id`, `nama_pengadu`, `perihal`, `detail`, `tanggal_pengaduan`, `status`, `bukti`) VALUES
-(4, 'anonym', 'sda', 'asdad', '2022-11-14 02:59:26', 'belum diproses', 'dummy.jpg'),
-(5, 'soepomo', 'sdfsd', 'sdfsdfsdfdsfsfsdfsdfghghghghggh', '2022-11-14 03:01:01', 'belum diproses', 'dummy.jpg');
+INSERT INTO `pengaduan` (`id`, `id_user`, `nama_pengadu`, `perihal`, `detail`, `tanggal_pengaduan`, `tanggal_diproses`, `tanggal_selesai`, `status`) VALUES
+(4, 0, 'anonym', 'sda', 'asdad', '2022-11-14 02:59:26', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'belum diproses'),
+(15, 2, 'anonym', 'cek2', 'adfdfdsasdfsdfsadfsadfasdgfdhadfhafdgfdgdfgdfgdfgdfgfdgfd', '2022-11-18 12:34:20', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'diproses'),
+(16, 2, 'anonym', 'cek3', 'adasdasfdsfasfgsfdgdfghafgafgfdgdfgfdfgdfgfgfgdfgdfgdfgd', '2022-11-18 12:36:51', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'selesai'),
+(20, 2, 'Ada', 'asdasdasd', 'asdasdasdasfdfdfasdfadsfdsfdsfsdafsdfdsfsdaf', '2022-11-19 03:35:41', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'belum diproses'),
+(21, 2, 'Ada', 'sdfsdfsd', 'sdafasdfadfsafadsgsfgsfdgfsfdsafsddsdsfsadfasdfadsfdasfdsafsdafdsf', '2022-11-19 03:38:29', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'belum diproses'),
+(22, 2, 'Ada', 'cek foto', 'has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchang', '2022-11-19 03:47:57', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'belum diproses'),
+(23, 2, 'anonym', 'asdas', ' user()->id user()->id user()->id user()->id user()->id user()->id user()->id user()->id user()->id user()->id user()->id', '2022-11-19 03:51:26', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'belum diproses'),
+(24, 2, 'anonym', 'asdsadasdasdsadasdasdasdasdasd', 'asdsad>guessExtension()>guessExtension()>guessExtension()>guessExtension()>guessExtension()>guessExtension()>guessExtension()>guessExtension()', '2022-11-19 03:52:42', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'belum diproses'),
+(25, 2, 'anonym', 'asdasdsadas', 'asdasdsdfasdfsdfadsfadsfadsfadsfasfasdfasdfasdfasdfsdfsdafasdfasdf', '2022-11-19 03:55:32', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'belum diproses'),
+(26, 2, 'anonym', 'sadasdfsdfasdfasfafdfasdf', 'sadasdfsdfasdfasfafdfasdfsadasdfsdfasdfasfafdfasdfsadasdfsdfasdfasfafdfasdfsadasdfsdfasdfasfafdfasdfsadasdfsdfasdfasfafdfasdfsadasdfsdfasdfasfafdfasdfsadasdfsdfasdfasfafdfasdfsadasdfsdfasdfasfafdfasdfsadasdfsdfasdfasfafdfasdf', '2022-11-19 03:58:02', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'belum diproses'),
+(27, 2, 'anonym', 'sadasdadasdasdasdasdasdsadasd', 'sadasdfsdfasdfasfafdfasdfsadasdfsdfasdfasfafdfasdfsadasdfsdfasdfasfafdfasdfsadasdfsdfasdfasfafdfasdfsadasdfsdfasdfasfafdfasdfsadasdfsdfasdfasfafdfasdfsadasdfsdfasdfasfafdfasdf', '2022-11-19 03:58:45', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'belum diproses'),
+(28, 2, 'anonym', 'cekfoto final', '<?=$bukti[\'img_tiga\']?><?=$bukti[\'img_tiga\']?><?=$bukti[\'img_tiga\']?><?=$bukti[\'img_tiga\']?><?=$bukti[\'img_tiga\']?><?=$bukti[\'img_tiga\']?><?=$bukti[\'img_tiga\']?><?=$bukti[\'img_tiga\']?><?=$bukti[\'img_tiga\']?><?=$bukti[\'img_tiga\']?><?=$bukti[\'img_tiga\']?><?=$bukti[\'img_tiga\']?><?=$bukti[\'img_tiga\']?><?=$bukti[\'img_tiga\']?>', '2022-11-19 04:00:36', '2022-11-22 17:13:41', '0000-00-00 00:00:00', 'belum diproses'),
+(29, 2, 'anonym', 'sadasdasdasdas', 'sadasdasdasdasdasdasdasdasdsadasdadsasdadsadsasdasdasdasdasdasdasdasdsad', '2022-11-19 04:16:55', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'belum diproses');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_bukti`
+--
+
+CREATE TABLE `tbl_bukti` (
+  `id` int(11) NOT NULL,
+  `pengaduan_id` int(11) NOT NULL,
+  `img_satu` varchar(30) NOT NULL,
+  `img_dua` varchar(30) NOT NULL,
+  `img_tiga` varchar(30) NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `deleted_at` datetime NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tbl_bukti`
+--
+
+INSERT INTO `tbl_bukti` (`id`, `pengaduan_id`, `img_satu`, `img_dua`, `img_tiga`, `updated_at`, `deleted_at`, `created_at`) VALUES
+(1, 15, '1668753260_6475a4b09ade34837a2', '1668753260_888fc912cad5b1f5306', '1668753260_a2aa61790f9f7255dd2', '2022-11-18 00:34:20', '0000-00-00 00:00:00', '2022-11-18 00:34:20'),
+(2, 16, '1668753411_c892cb602c6bc8d5236', '1668753411_540714c1efc6cd9dc18', '1668753411_ce7fd22fcc8b1cf37eb', '2022-11-18 00:36:51', '0000-00-00 00:00:00', '2022-11-18 00:36:51'),
+(3, 19, '1668753995_3be77f94d151deb3622', 'null', 'null', '2022-11-18 00:46:35', '0000-00-00 00:00:00', '2022-11-18 00:46:35'),
+(5, 21, 'repository-open-graph-template', 'null', 'null', '2022-11-19 03:38:29', '0000-00-00 00:00:00', '2022-11-19 03:38:29'),
+(6, 22, 'Screenshot (1).png', 'null', 'null', '2022-11-19 03:47:57', '0000-00-00 00:00:00', '2022-11-19 03:47:57'),
+(7, 23, 'img-2', 'img-2', 'img-2', '2022-11-19 03:51:26', '0000-00-00 00:00:00', '2022-11-19 03:51:26'),
+(8, 24, 'img-2png', 'img-2png', 'img-2png', '2022-11-19 03:52:42', '0000-00-00 00:00:00', '2022-11-19 03:52:42'),
+(9, 25, 'img-2.jpg', 'img-2.png', 'null', '2022-11-19 03:55:32', '0000-00-00 00:00:00', '2022-11-19 03:55:32'),
+(10, 26, 'bukti0-2.png', 'bukti1-2.png', 'null', '2022-11-19 03:58:02', '0000-00-00 00:00:00', '2022-11-19 03:58:02'),
+(11, 27, 'bukti0-2.jpg', 'bukti1-2.png', 'null', '2022-11-19 03:58:45', '0000-00-00 00:00:00', '2022-11-19 03:58:45'),
+(12, 28, 'bukti0-2.png', 'bukti1-2.png', 'bukti2-2.png', '2022-11-19 04:00:36', '0000-00-00 00:00:00', '2022-11-19 04:00:36'),
+(13, 29, 'bukti0-2.png', 'null', 'null', '2022-11-19 04:16:55', '0000-00-00 00:00:00', '2022-11-19 04:16:55');
 
 -- --------------------------------------------------------
 
@@ -289,7 +345,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(2, 'ganda@gmail.com', 'Ada', '$2y$10$ozBo6fAWJRuLNewK3h86o.lk1P3srbVwrhT8FV5LdIRWaPw8VRDrm', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-11-13 02:41:20', '2022-11-13 02:41:20', NULL),
+(2, 'user@gmail.com', 'Ada', '$2y$10$ozBo6fAWJRuLNewK3h86o.lk1P3srbVwrhT8FV5LdIRWaPw8VRDrm', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-11-13 02:41:20', '2022-11-13 02:41:20', NULL),
 (3, 'admin@gmail.com', 'Adm', '$2y$10$OcIcHfJU/47P7VkdKRALse9xAKwlG1YiBiPb4q3Z7/k0gfAe/C.aO', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-11-13 02:49:54', '2022-11-13 02:49:54', NULL),
 (4, 'gandagunawan36@gmail.com', 'Asstro', '$2y$10$m5Bcb3lg2Xdj/ppMlX3F2uPPlGufAR5EAZi12BbMAJGQxRcregSui', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-11-14 08:36:52', '2022-11-14 08:36:52', NULL),
 (5, 'hakimastina@gmail.com', 'firman', '$2y$10$1iqJ0czUzXbo3AbXYj41GOFAfb4vpr24naKr3EQ7XmnktuV3iedEK', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-11-14 11:33:44', '2022-11-14 11:33:44', NULL);
@@ -372,6 +428,12 @@ ALTER TABLE `pengaduan`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `tbl_bukti`
+--
+ALTER TABLE `tbl_bukti`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
@@ -399,7 +461,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT untuk tabel `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_permissions`
@@ -429,7 +491,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `pengaduan`
 --
 ALTER TABLE `pengaduan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbl_bukti`
+--
+ALTER TABLE `tbl_bukti`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`

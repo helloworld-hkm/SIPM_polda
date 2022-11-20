@@ -86,7 +86,7 @@
                         <a class="collapse-item" href="<?=base_url('admin/pengaduan')?>">Semua Pengaduan</a>
                         <a class="collapse-item" href="<?=base_url('admin/pengaduan_masuk')?>">Masuk</a>
                         <a class="collapse-item" href="<?=base_url('admin/pengaduan_diproses')?>">Diproses</a>
-                        <a class="collapse-item" href="<?=base_url('admin/pengaduan/selesai')?>">Selesai</a>
+                        <a class="collapse-item" href="<?=base_url('admin/pengaduan_selesai')?>">Selesai</a>
                     </div>
                 </div>
             </li>

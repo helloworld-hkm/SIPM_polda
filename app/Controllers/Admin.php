@@ -52,7 +52,6 @@ class Admin extends BaseController
     {
         $this->builder = $this->db->table('users');
         $this->builder->select('*');
-        $this->builder->where('id', user()->id);
         $this->query = $this->builder->get();
         $data = [
             'pengguna' => $this->query->getResultArray(),
@@ -65,7 +64,6 @@ class Admin extends BaseController
     {
         $this->builder = $this->db->table('pengaduan');
         $this->builder->select('*');
-        $this->builder->where('id_user', user()->id);
         $this->query = $this->builder->get();
         $data['pengaduan'] = $this->query->getResultArray();
         // dd(  $data['pengaduan']);
@@ -93,28 +91,41 @@ class Admin extends BaseController
 
     public function pengaduan_diproses()
     {
+        $this->builder = $this->db->table('pengaduan');
+        $this->builder->select('*');
+        $this->builder->where('status', 'diproses');
+        $this->query = $this->builder->get();
         $data = [
-            // 'user' => $this->user,
-            'title' => 'Daftar Pengaduan - Sedang Diproses'
+            'pengaduan' => $this->query->getResultArray(),
+            'title' => 'Daftar Pengaduan - Sedang DiProses'
         ];
 
         return view('admin/pengaduan/diproses', $data);
     }
     public function pengaduan_masuk()
     {
+        $this->builder = $this->db->table('pengaduan');
+        $this->builder->select('*');
+        $this->builder->where('status', 'belum diproses');
+        $this->query = $this->builder->get();
         $data = [
-            // 'user' => $this->user,
-            'title' => 'Daftar Pengaduan - Sedang masuk'
+            'pengaduan' => $this->query->getResultArray(),
+            'title' => 'Daftar Pengaduan - Masuk'
         ];
 
         return view('admin/pengaduan/masuk', $data);
     }
     public function pengaduan_selesai()
     {
+        $this->builder = $this->db->table('pengaduan');
+        $this->builder->select('*');
+        $this->builder->where('status', 'selesai');
+        $this->query = $this->builder->get();
         $data = [
-            // 'user' => $this->user,
-            'title' => 'Daftar Pengaduan - Sedang selesai'
+            'pengaduan' => $this->query->getResultArray(),
+            'title' => 'Daftar Pengaduan - Selesai'
         ];
+
 
         return view('admin/pengaduan/diselesaikan', $data);
     }

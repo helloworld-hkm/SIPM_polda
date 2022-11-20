@@ -19,25 +19,47 @@
                 <figure><img src="<?php echo base_url() ?>/assets/img/auth/sigin_image.jpg" alt="sing in image" width="100%" height="100%"></figure>
             </div>
 
-            <?= form_open('/auth/validasi_login', ['class' => 'signin-form']); ?>
-            <h2 class="form-title">Selamat Datang</h2>
-            <?= csrf_field(); ?>
-            <div class="form-group">
-                <label for="email"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                <input type="text" name="email" id="email" value="<?= old('email'); ?>" placeholder="Email atau username" />
-                <small class="text-danger"><?= $validation->getError('email'); ?></small>
-            </div>
-            <div class="form-group">
-                <label for="password"><i class="zmdi zmdi-lock"></i></label>
-                <input type="password" name="password" id="password" placeholder="Password" />
-                <small class="text-danger"><?= $validation->getError('password'); ?></small>
-            </div>
-            <div class="form-group form-button text-center">
-                <button type="submit" name="btn-submit" id="signin" class="btn form-submit" />Log In</button>
-            </div>
+            <form action="<?= route_to('login') ?>" method="post" class="user">
+                <?= csrf_field() ?>
+
+
+                <?php if ($config->validFields === ['email']) : ?>
+                    <div class="form-group">
+                        <input type="email" class="form-control <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" name="login" placeholder="<?= lang('Auth.email') ?>">
+                        <div class="invalid-feedback">
+                            <?= session('errors.login') ?>
+                        </div>
+                    </div>
+                <?php else : ?>
+                    <div class="form-group">
+                        <input type="text" class="form-control <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" name="login" placeholder="<?= lang('Auth.emailOrUsername') ?>">
+                        <div class="invalid-feedback">
+                            <?= session('errors.login') ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+                <div class="form-group">
+                    <input type="password" name="password" class="form-control  
+                            <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" placeholder="<?= lang('Auth.password') ?>">
+                </div>
+
+
+                <?php if ($config->allowRemembering) : ?>
+                    <div class="form-group">
+                        <div class="custom-control custom-checkbox small">
+                            <input type="checkbox" class="form-control-input" name="remembering" <?php if (old('remember')) : ?> checked <?php endif ?>>
+                            <?= lang('Auth.rememberMe') ?>
+                            <label class="form-control-label" for="customCheck">Remember Me</label>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+                <button type="submit" class="btn btn-primary btn-block">
+                    <?= lang('Auth.loginAction') ?></button>
+            </form>
             <a href="/auth/register" class="signup-image-link">Belum punya akun? Daftar</a>
             <a href="/app/Views/front/landing.php" class="signup-image-link">Kembali Ke Beranda? Tekan Disini</a>
-            <?= form_close(); ?>
         </div>
     </div>
     </div>

@@ -31,7 +31,7 @@
 
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <a href="/user/tambah" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Pengaduan Baru</a>
+                    <h3>Daftar Pengaduan</h3>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -73,7 +73,7 @@
                                         </a> -->
 
                                                 <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuLink"> -->
-                                                <a href="/user/detail" class="  btn btn-primary"><i class="fa fa-eye"></i> Detail</a>
+                                                <a href="/user/detail/<?= $data['id'] ?>" class="  btn btn-primary"><i class="fa fa-eye"></i> Detail</a>
                                                 <?php if ($data['status'] == 'belum diproses') { ?>
 
                                                     <a href="/user/detail" class="  btn btn-success"><i class="fa fa-pen"></i> Edit</a>
@@ -105,54 +105,4 @@
     </div>
 
 </div>
-<?= $this->endSection(); ?>
-
-<?= $this->section('additional-js'); ?>
-<script>
-    $(document).ready(function() {
-        $("#semua-pengaduan").DataTable({
-            "lengthMenu": [
-                [8, 15, 30, 50, -1],
-                [8, 15, 30, 50, "All"]
-            ],
-            "responsive": true,
-            "processing": true,
-            "serverside": true,
-            "order": [],
-            "ajax": {
-                "url": "<?= base_url('/admin/pengaduan/dt_pengaduan') ?>",
-                "type": "post"
-            },
-            "columnDefs": [{
-                "render": function(data) {
-                    return moment(data).format('DD MMMM YYYY');
-                },
-                "type": "date",
-                "targets": 1,
-            }, {
-                "orderable": false,
-                "targets": 4,
-            }],
-            "searchDelay": 350,
-            "scrollY": 300,
-            "scrollCollapse": true,
-            "language": {
-                "processing": "Loading data..",
-                "infoEmpty": "0 entri",
-                "info": "Menampilkan _TOTAL_ data pengaduan.",
-                "infoFiltered": "(difilter dari _MAX_ total entri)",
-                "emptyTable": "Belum ada data",
-                "lengthMenu": "Menampilkan _MENU_ entri",
-                "search": "Pencarian:",
-                "zeroRecords": "Data tidak ditemukan",
-                "paginate": {
-                    "first": "Awal",
-                    "last": "Akhir",
-                    "next": "Selanjutnya",
-                    "previous": "Sebelumnya"
-                },
-            }
-        })
-    })
-</script>
 <?= $this->endSection(); ?>
