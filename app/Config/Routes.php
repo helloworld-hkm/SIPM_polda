@@ -36,6 +36,7 @@ $routes->get('/user', 'User::index', ['filter' => 'role:user']);
 $routes->put('/user/detail/(:num)', 'user::detail/$1',['filter' => 'role:user']);
 $routes->get('/user/pengaduan', 'User::pengaduan', ['filter' => 'role:user']);
 $routes->get('/user/simpanPengaduan', 'User::simpanPengaduan', ['filter' => 'role:user']);
+$routes->put('/user/ubah/(:num)', 'user::ubah/$1',['filter' => 'role:user']);
 $routes->get('/admin', 'Admin::index', ['filter' => 'role:admin']);
 /*
  * --------------------------------------------------------------------
