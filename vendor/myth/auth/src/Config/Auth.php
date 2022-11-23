@@ -75,9 +75,10 @@ class Auth extends BaseConfig
      */
     public $views = [
 
-        // 'login'           => '\App\Views\login',
-        'login'           => 'Myth\Auth\Views\login',
-        'register'        => 'Myth\Auth\Views\register',
+        'login'           => '\App\Views\login',
+        'register'           => '\App\Views\register',
+        // 'login'           => 'Myth\Auth\Views\login',
+        // 'register'        => 'Myth\Auth\Views\register',
         'forgot'          => 'Myth\Auth\Views\forgot',
         'reset'           => 'Myth\Auth\Views\reset',
         'emailForgot'     => 'Myth\Auth\Views\emails\forgot',
@@ -320,7 +321,7 @@ class Auth extends BaseConfig
 
     /**
      * --------------------------------------------------------------------
-     * Password Check Helpers
+     * Password Check s
      * --------------------------------------------------------------------
      *
      * The PasswordValidator class runs the password through all of these

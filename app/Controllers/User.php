@@ -137,7 +137,7 @@ class User extends BaseController
 
         foreach ($images as $i => $img) {
             if ($img->isValid() && !$img->hasMoved()) {
-                $files[$i] ='bukti'.$i.'-'. user()->id.'.'.$img->guessExtension();
+                $files[$i] = 'bukti' . $i . '-' . user()->id . '.' . $img->guessExtension();
             }
         }
         $pengaduan_id = $this->pengaduan->insertID(); // last insert id
@@ -160,55 +160,55 @@ class User extends BaseController
         return redirect()->to('user/pengaduan/tambah_pengaduan');
     }
 
-   
+
 
     public function detail($id)
     {
-        $data=$this->db->table('pengaduan');
+        $data = $this->db->table('pengaduan');
         $data->select('*');
-        $data->where('id',$id);
-        $query=$data->get();
-        
-        $bukti=$this->db->table('tbl_bukti');
+        $data->where('id', $id);
+        $query = $data->get();
+
+        $bukti = $this->db->table('tbl_bukti');
         $bukti->select('*');
-        $bukti->where('pengaduan_id',$id);
-        $query1=$bukti->get()->getRowArray();
+        $bukti->where('pengaduan_id', $id);
+        $query1 = $bukti->get()->getRowArray();
         // dd($query1);
-        $ex=[
-            'bukti'=> $query1,
-            'detail'=>$hasil=$query->getRow()
+        $ex = [
+            'bukti' => $query1,
+            'detail' => $hasil = $query->getRow()
 
         ];
-        
 
-        return view('user/pengaduan/detail',$ex);
+
+        return view('user/pengaduan/detail', $ex);
     }
     public function ubah($id)
     {
-        
-        $data=$this->db->table('pengaduan');
-        $data->select('*');
-        $data->where('id',$id);
-        $query=$data->get();
 
-        $bukti=$this->db->table('tbl_bukti');
+        $data = $this->db->table('pengaduan');
+        $data->select('*');
+        $data->where('id', $id);
+        $query = $data->get();
+
+        $bukti = $this->db->table('tbl_bukti');
         $bukti->select('*');
-        $bukti->where('pengaduan_id',$id);
-        $query1=$bukti->get()->getRowArray();
-        $data=[
-            'bukti'=> $query1,
-            'data'=>$hasil=$query->getRowArray(),
+        $bukti->where('pengaduan_id', $id);
+        $query1 = $bukti->get()->getRowArray();
+        $data = [
+            'bukti' => $query1,
+            'data' => $hasil = $query->getRowArray(),
             'validation' => $this->validation,
 
         ];
-       
 
-      
 
-        return view('user/pengaduan/ubah_pengaduan',$data);
+
+        return view('user/pengaduan/ubah_pengaduan', $data);
     }
 
-    public function ubahPerubahan($id){
+    public function ubahPerubahan($id)
+    {
         $rules = [
             'judul_pengaduan' => [
                 'rules' => 'required',

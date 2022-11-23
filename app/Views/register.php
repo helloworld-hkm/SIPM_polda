@@ -15,7 +15,7 @@
                     <div class="col-lg">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Silahkan login.</h1>
+                                <h1 class="h4 text-gray-900 mb-4"><?= lang('Auth.register') ?></h1>
                             </div>
 
                             <?php if (session()->getFlashdata('msg-auth')) : ?>
@@ -38,24 +38,32 @@
                                 </div>
                             <?php endif; ?>
 
-                            <form action="<?= route_to('login') ?>" method="post" class="user">
-                                <?= csrf_field(); ?>
-                                <div class="form-group">
-                                    <input type="text" class="form-control <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" name="login" placeholder="<?= lang('Auth.emailOrUsername') ?>">
-                                    <div class="invalid-feedback pl-1">
-                                        <?= session('errors.login') ?>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" name="password" class="form-control <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" placeholder="<?= lang('Auth.password') ?>">
-                                    <div class="invalid-feedback pl-1">
-                                        <?= session('errors.login') ?>
-                                    </div>
-                                </div>
-                                <button type="submit" name="btn-submit" class="btn btn-primary btn-block">
-                                    Login
-                                </button>
+                            <form action="<?= route_to('register') ?>" method="post" class="user">
+                                <?= csrf_field() ?>
 
+                                <div class="form-group">
+                                    <input type="text" class="form-control  form-control-user<?php if (session('errors.username')) : ?>is-invalid<?php endif ?> " id="exampleInputEmail" name="username" placeholder="<?= lang('Auth.username') ?>" value="<?= old('username') ?>">
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-user
+                             <?php if (session('errors.email')) : ?>is-invalid<?php endif ?>" name="email" placeholder="<?= lang('Auth.email') ?> " value="<?= old('email') ?>">
+                                    <small id="emailHelp" class="form-text text-muted"><?= lang('Auth.weNeverShare') ?></small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password"><?= lang('Auth.password') ?></label>
+                                    <input type="password" name="password" class="form-control
+                                 <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" placeholder="<?= lang('Auth.password') ?>" autocomplete="off">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="pass_confirm"><?= lang('Auth.repeatPassword') ?></label>
+                                    <input type="password" name="pass_confirm" class="form-control
+                                 <?php if (session('errors.pass_confirm')) : ?>is-invalid<?php endif ?>" placeholder="<?= lang('Auth.repeatPassword') ?>" autocomplete="off">
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block"><?= lang('Auth.register') ?>
+                                </button>
                             </form>
                             <hr>
                             <?php if ($config->activeResetter) : ?>
