@@ -71,21 +71,23 @@ class Admin extends BaseController
         return view('admin/pengaduan/index', $data);
     }
 
-    public function detail()
+    public function detail($id)
     {
+        $data=$this->db->table('pengaduan');
+        $data->select('*');
+        $data->where('id',$id);
+        $query=$data->get()->getRow();
+        
+        $bukti=$this->db->table('tbl_bukti');
+        $bukti->select('*');
+        $bukti->where('pengaduan_id',$id);
+        $query1=$bukti->get()->getRowArray();
+   
         $data = [
-            //         'user' => $this->user,
+            'bukti'=> $query1,
+            'detail'=>$query,
             'title' => 'POLDA JATENG - Detail Pengaduan',
-            //         'data' => $this->pengaduan->find($id),
-            //         'bukti' => $this->bukti->getBukti($id),
-
         ];
-
-
-        // if (empty($data['data'])) {
-        //     throw new \CodeIgniter\Exceptions\PageNotFoundException('Pengaduan tidak ditemukan.');
-        // }
-
         return view('admin/pengaduan/detail_pengaduan', $data);
     }
 
@@ -128,5 +130,16 @@ class Admin extends BaseController
 
 
         return view('admin/pengaduan/diselesaikan', $data);
+    }
+    public function prosesPengaduan($id)
+    {
+        $date = 
+        $this->pengaduan->update($id,[
+            'tanggal_diproses' => date("Y-m-d h:i:s"),
+            // 'status' => 'diproses',
+
+        ]);
+        session()->setFlashdata('msg', 'Status Pengaduan berhasil Diubah');
+        return redirect()->to('admin/pengaduan');
     }
 }

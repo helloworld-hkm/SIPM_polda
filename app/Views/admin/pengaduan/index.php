@@ -19,8 +19,13 @@
     <?php if (session()->getFlashdata('msg')) : ?>
         <div class="row">
             <div class="col-12">
-                <div class="alert alert-success" role="alert">
-                    <?= session()->getFlashdata('msg'); ?>
+                <div class="alert alert-success alert-dismissible show fade" role="alert">
+                    
+                    <div class="alert-body">
+          <button class="close" data-dismiss>x</button>
+          <b><i class="fa fa-check"></i></b>
+          <?= session()->getFlashdata('msg'); ?>
+        </div>
                 </div>
             </div>
         </div>
@@ -73,7 +78,7 @@
                                         </a> -->
 
                                                 <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuLink"> -->
-                                                <a href="/user/detail/<?= $data['id'] ?>" class="  btn btn-primary"><i class="fa fa-eye"></i> Detail</a>
+                                                <a href="/admin/detail/<?= $data['id'] ?>" class="  btn btn-primary"><i class="fa fa-eye"></i> Detail</a>
                                                 <?php if ($data['status'] == 'belum diproses') { ?>
 
                                                     <a href="/user/detail" class="  btn btn-success"><i class="fa fa-pen"></i> Edit</a>
@@ -105,4 +110,17 @@
     </div>
 
 </div>
+<?= $this->endSection(); ?>
+<?= $this->section('additional-js'); ?>
+<script>
+       window.setTimeout(function() {
+      $(".alert").fadeTo(500, 0).slideUp(500, function() {
+        $($this).remove();
+      })
+
+    }, 3000);
+
+
+ 
+</script>
 <?= $this->endSection(); ?>

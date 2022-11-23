@@ -44,15 +44,15 @@
                     <h3 ></h3>
                 </div> -->
                 <div class="card-body">
-                    <div class="row my-1">
+                    <div class="row">
                         <div class="col-md-3">Nama Pengadu</div>
                         <div class="col-md-1 d-none d-md-block">:</div>
                         <div class="col-md-8">
                             <?=$detail->nama_pengadu?>
                         </div>
                     </div>
-                    <!-- <hr class="invisible"> -->
-                    <div class="row  my-1">
+                    <hr >
+                    <div class="row  ">
                         <div class="col-md-3">Status Pengaduan</div>
                         <div class="col-md-1 d-none d-md-block">:</div>
                         <div class="col-md-8">
@@ -61,32 +61,32 @@
                         </div>
                         
                     </div>
-                    <!-- <hr> -->
-                    <div class="row  my-1">
+                    <hr>
+                    <div class="row ">
                         <div class="col-md-3">Tanggal Pengaduan</div>
                         <div class="col-md-1 d-none d-md-block">:</div>
                         <div class="col-md-8">
                         <?=$detail->tanggal_pengaduan?>
                         </div>
                     </div>
-                    <!-- <hr> -->
-                    <div class="row  my-1">
+                    <hr>
+                    <div class="row ">
                         <div class="col-md-3">Perihal</div>
                         <div class="col-md-1 d-none d-md-block">:</div>
                         <div class="col-md-8">
                         <?=$detail->perihal?>
                         </div>
                     </div>
-                    <!-- <hr> -->
-                    <div class="row  my-2">
+                    <hr>
+                    <div class="row  ">
                         <div class="col-md-3">Rincian</div>
                         <div class="col-md-1 d-none d-md-block">:</div>
                         <div class="col-md-8">
                             <span class="text-justify"> <?=$detail->detail?></span>
                         </div>
                     </div>
-                    <!-- <hr> -->
-                    <div class="row  my-2">
+                    <hr>
+                    <div class="row  ">
                         <div class="col-md-3">Foto Bukti</div>
                         <div class="col-md-1 d-none d-md-block">:</div>
                         <div class="col-md-8">
@@ -99,7 +99,7 @@
                             <?php endif; ?>
                         </div>
                     </div>
-                    <!-- <hr> -->
+                    <hr>
                     <div class="accordion" id="accordionExample">
   <div class="">
     <div class="" id="headingOne">

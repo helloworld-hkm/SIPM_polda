@@ -16,139 +16,145 @@
 
     <div class="row">
         <div class="col-12">
+      
+        <!-- <ul class="sessions">
+      <li class="li-diajukan">
+        <div class="time">09:00 AM</div>
+        <p>Laporan Diajukan</p>
+      </li>
+      <li  class="li-diproses">
+        <div class="time">09:05 AM</div>
+        <p>Laporan Diproses </p>
+      </li>
+      <li  class="li-selesai">
+        <div class="time">09:30 AM</div>
+        <p>Laporan Selesai</p>
+      </li>
+     
+    </ul> -->
             <div class="card shadow card-detail">
-                <div class="card-header">
-                    <h3 class="mb-0 text-gray-900"><?= $title; ?></h3>
+                <div class="card-header  ">
+                    <a href="/admin/pengaduan" class=" btn ml-n3 text-primary font-weight-bold "><i class="fas fa-chevron-left"></i> Kembali ke daftar pengaduan</a>
+                    <button class="btn btn-primary float-right ml-2 " type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+         <i class="fa fa-eye rounded-cyrcle"></i> Timeline
+        </button>
+                <?php  if ($detail->status=='belum diproses') {?>
+                    
+             
+                    <a href="/admin/prosesPengaduan/<?=$detail->id?>" class="text-light btn btn-warning font-weight-bold  float-right" ><i class="fa fa-clipboard"></i> Proses Laporan</a>
+                    <?php  } elseif ($detail->status=='diproses') {?>
+                        <div class="btn-group float-right  dropleft">
+  <button type="button" class="btn btn-success dropdown-toggle  " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   Selesaikan Pengaduan
+  </button>
+  <div class="dropdown-menu">
+  <a class="dropdown-item" href="#">Terima</a>
+    <a class="dropdown-item" href="#">Tolak</a>
+  </div>
+</div>
+                   <?php }    ;?>
                 </div>
+                <!-- <div class="card-header">
+                    <h3 ></h3>
+                </div> -->
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <?php if (null) : ?>
-                                <button type="button" class="btn btn-sm btn-primary disabled"><i class="fas fa-info-circle"></i> Pengaduan selesai </button>
-                            <?php else : ?>
-                                <button type="button" data-toggle="modal" data-target="#approval" class="btn btn-sm btn-primary"><i class="fas fa-info-circle"></i>status pengaduan</button>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                    <hr>
                     <div class="row">
                         <div class="col-md-3">Nama Pengadu</div>
                         <div class="col-md-1 d-none d-md-block">:</div>
                         <div class="col-md-8">
-                            nama
+                            <?=$detail->nama_pengadu?>
                         </div>
                     </div>
-                    <hr>
-                    <div class="row">
+                    <hr >
+                    <div class="row  ">
                         <div class="col-md-3">Status Pengaduan</div>
                         <div class="col-md-1 d-none d-md-block">:</div>
                         <div class="col-md-8">
-                            status pengaduan
+                        <?=$detail->status?>
+                            
                         </div>
+                        
                     </div>
                     <hr>
-                    <div class="row">
+                    <div class="row ">
                         <div class="col-md-3">Tanggal Pengaduan</div>
                         <div class="col-md-1 d-none d-md-block">:</div>
                         <div class="col-md-8">
-                            tgl
+                        <?=$detail->tanggal_pengaduan?>
                         </div>
                     </div>
                     <hr>
-                    <div class="row">
+                    <div class="row ">
                         <div class="col-md-3">Perihal</div>
                         <div class="col-md-1 d-none d-md-block">:</div>
                         <div class="col-md-8">
-                            judul
+                        <?=$detail->perihal?>
                         </div>
                     </div>
                     <hr>
-                    <div class="row">
+                    <div class="row  ">
                         <div class="col-md-3">Rincian</div>
                         <div class="col-md-1 d-none d-md-block">:</div>
                         <div class="col-md-8">
-                            isi
+                            <span class="text-justify"> <?=$detail->detail?></span>
                         </div>
                     </div>
                     <hr>
-                    <div class="row">
+                    <div class="row  ">
                         <div class="col-md-3">Foto Bukti</div>
                         <div class="col-md-1 d-none d-md-block">:</div>
                         <div class="col-md-8">
-                            <a href="/uploads/foto_1" target="_blank"><img src="/uploads/foto1" class="img-fluid img-thumbnail" width="100"></a>
-                            <?php if (null) : ?>
-                                <a href="/uploads/foto2" target="_blank"><img src="/uploads/foto2" class="img-fluid img-thumbnail" width="100"></a>
+                            <a href="/uploads/<?=$bukti['img_satu']?>" target="_blank"><img src="/uploads/<?=$bukti['img_satu']?>" class="img-fluid img-thumbnail" width="100"></a>
+                            <?php if ($bukti['img_dua']!='null') : ?>
+                                <a href="/uploads/<?=$bukti['img_dua']?>" target="_blank"><img src="/uploads/<?=$bukti['img_dua']?>" class="img-fluid img-thumbnail" width="100"></a>
                             <?php endif; ?>
-                            <?php if (null) : ?>
-                                <a href="/uploads/foto3" target="_blank"><img src="/uploads/foto3" class="img-fluid img-thumbnail" width="100"></a>
+                            <?php if ($bukti['img_tiga']!='null') : ?>
+                                <a href="/uploads/<?=$bukti['img_tiga']?>" target="_blank"><img src="/uploads/<?=$bukti['img_tiga']?>" class="img-fluid img-thumbnail" width="100"></a>
                             <?php endif; ?>
                         </div>
                     </div>
+                    <hr>
+                    <div class="accordion" id="accordionExample">
+  <div class="">
+    <div class="" id="headingOne">
+      <h5 class="mb-0">
+       
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+      <h1> Timeline Pengaduan</h1>
+      <ul class="sessions">
+      <li class="li-diajukan">
+        <div class="time">  <?=$detail->tanggal_pengaduan?></div>
+        <p>Laporan Diajukan</p>
+      </li>
+    <?php if ($detail->tanggal_diproses!='0000-00-00 00:00:00') {?>
+        <li  class="li-diproses">
+        <div class="time">  <?=$detail->tanggal_diproses?></div>
+        <p>Laporan Diproses </p>
+      </li>
+    <?php }?>
+    <?php if ($detail->tanggal_selesai!='0000-00-00 00:00:00') {?>
+      <li  class="li-selesai">
+        <div class="time">09:30 AM</div>
+        <p>Laporan Selesai</p>
+      </li>
+      <?php }?>
+    </ul>
+      </div>
+    </div>
+  </div>
+ 
+</div>
+                    
                 </div>
             </div>
 
-        </div>
-    </div>
-
-    <div class="modal fade" id="approval" tabindex="-1" role="dialog" aria-labelledby="approvalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <form action="">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="approvalLabel">Yakin ingin mengubah status pengaduan?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <span class="text-gray-900">Klik tombol "Yakin" untuk mengubah status pengaduan.</span>
-
-                        <?= csrf_field(); ?>
-                        <input type="hidden" name="_method" value="PUT">
-                        <input type="hidden" name="status_pengaduan" value="">
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary btn-yakin">Yakin</button>
-                    </div>
-                </form>
-            </div>
         </div>
     </div>
 
 </div>
 <!-- /.container-fluid -->
-<?= $this->endSection(); ?>
-
-<?= $this->section('additional-js'); ?>
-<script>
-    $(document).ready(function() {
-        $("#formApprovePengaduan").submit(function(e) {
-            e.preventDefault()
-
-            $.ajax({
-                url: $(this).attr("action"),
-                type: $(this).attr("method"),
-                dataType: "json",
-                data: $(this).serialize(),
-                beforeSend: function(res) {
-                    $('.btn-yakin').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> <i>Loading...</i>');
-                },
-                success: function(res) {
-                    $.toast({
-                        heading: res.msg,
-                        position: 'top-right',
-                        icon: 'success'
-                    })
-
-                    $("#approval").modal("toggle")
-
-                    setTimeout(function() {
-                        location.reload()
-                    }, 3000)
-                }
-            })
-        })
-    })
-</script>
 <?= $this->endSection(); ?>

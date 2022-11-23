@@ -75,6 +75,7 @@ class User extends BaseController
     {
         $data = [
             'validation' => $this->validation,
+            'title'=>'Tambah Pengaduan'
         ];
 
         return view('user/pengaduan/tambah_pengaduan', $data);
@@ -176,7 +177,8 @@ class User extends BaseController
         // dd($query1);
         $ex=[
             'bukti'=> $query1,
-            'detail'=>$hasil=$query->getRow()
+            'detail'=>$hasil=$query->getRow(),
+            'title'=>'Detail Pengaduan'
 
         ];
         
@@ -199,6 +201,7 @@ class User extends BaseController
             'bukti'=> $query1,
             'data'=>$hasil=$query->getRowArray(),
             'validation' => $this->validation,
+            'title'=>'Ubah Pengaduan'
 
         ];
        
@@ -253,56 +256,64 @@ class User extends BaseController
             $nama_pengadu = $this->request->getPost('pengadu');
         }
         $date = date("Y/m/d h:i:s");
-        $dataPengaduan = [
+        // $dataPengaduan = [
+        //     'id_user' => user()->id,
+        //     'perihal' => $this->request->getPost(' '),
+        //     'detail' => $this->request->getPost('isi_pengaduan'),
+        //     'nama_pengadu' => $nama_pengadu,
+        //     'tanggal_pengaduan' => $date,
+        //     'status' => 'belum diproses',
+
+        // ];
+        $this->pengaduan->update($id,[
             'id_user' => user()->id,
-            'perihal' => $this->request->getPost(' '),
+            'perihal' => $this->request->getPost('judul_pengaduan'),
             'detail' => $this->request->getPost('isi_pengaduan'),
             'nama_pengadu' => $nama_pengadu,
             'tanggal_pengaduan' => $date,
             'status' => 'belum diproses',
 
-        ];
-        $this->pengaduan->save($dataPengaduan);
-        // if ($images[0]->getError() !== 4) {
-        //     foreach ($images as $i => $img) {
-        //         if ($img->isValid() && !$img->hasMoved()) {
-        //             $files[$i] = $img->getRandomName();
-        //         }
-        //     }
+        ]);
+        if ($images[0]->getError() !== 4) {
+            foreach ($images as $i => $img) {
+                if ($img->isValid() && !$img->hasMoved()) {
+                    $files[$i] = 'bukti'.$i.'-'. user()->id.'.'.$img->guessExtension();
+                }
+            }
 
-        //     // get data bukti
-        //     $bukti = $this->bukti->getBukti($id);
+            // get data bukti
+            $bukti = $this->bukti->getBukti($id);
 
-        //     // hapus file lama
-        //     unlink('uploads/' . $bukti['img_satu']);
-        //     if ($bukti['img_dua'] != null) {
-        //         unlink('uploads/' . $bukti['img_dua']);
-        //     }
-        //     if ($bukti['img_tiga'] != null) {
-        //         unlink('uploads/' . $bukti['img_tiga']);
-        //     }
+            // hapus file lama
+            unlink('uploads/' . $bukti['img_satu']);
+            if ($bukti['img_dua'] != null) {
+                unlink('uploads/' . $bukti['img_dua']);
+            }
+            if ($bukti['img_tiga'] != null) {
+                unlink('uploads/' . $bukti['img_tiga']);
+            }
 
-        //     // update tbl_bukti
-        //     $img_dua = (array_key_exists(1, $files) ? $files[1] : null);
-        //     $img_tiga = (array_key_exists(2, $files) ? $files[2] : null);
+            // update tbl_bukti
+            $img_dua = (array_key_exists(1, $files) ? $files[1] : 'null');
+            $img_tiga = (array_key_exists(2, $files) ? $files[2] : 'null');
 
-        //     $this->bukti->save([
-        //         'id' => $this->request->getPost('bukti_id'),
-        //         'img_satu' => $files[0],
-        //         'img_dua' => $img_dua,
-        //         'img_tiga' => $img_tiga,
-        //         'updated_at' => date('Y-m-d H:i:s'),
-        //     ]);
+            $this->bukti->save([
+                'id' => $this->request->getPost('bukti_id'),
+                'img_satu' => $files[0],
+                'img_dua' => $img_dua,
+                'img_tiga' => $img_tiga,
+                'updated_at' => date('Y-m-d H:i:s'),
+            ]);
 
-        //     // move file baru
-        //     foreach ($images as $i => $img) {
-        //         if ($img->isValid() && !$img->hasMoved()) {
-        //             $img->move('uploads', $files[$i]);
-        //         }
-        //     }
-        // }
+            // move file baru
+            foreach ($images as $i => $img) {
+                if ($img->isValid() && !$img->hasMoved()) {
+                    $img->move('uploads', $files[$i]);
+                }
+            }
+        }
 
         session()->setFlashdata('msg', 'Pengaduan berhasil diubah.');
-
+        return redirect()->to('user/pengaduan');
     }
 }

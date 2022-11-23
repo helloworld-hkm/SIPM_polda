@@ -8,7 +8,7 @@ class Pengaduan extends Model
     protected $table = 'pengaduan';
     // protected $useTimestamps = true;
     protected $primarykey = 'id';
-    protected $allowedFields = ['id_user','nama_pengadu', 'perihal', 'detail', 'tanggal_pengaduan', 'status'];
+    protected $allowedFields = ['id_user','nama_pengadu', 'perihal', 'detail', 'tanggal_pengaduan','tanggal_diproses', 'status'];
 
     public function getPengaduan($id = false)
     {
