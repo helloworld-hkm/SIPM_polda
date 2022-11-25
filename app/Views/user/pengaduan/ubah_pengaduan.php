@@ -31,7 +31,7 @@
                     <a href="/user/pengaduan">&laquo; Kembali ke daftar pengaduan</a>
                 </div>
                 <div class="card-body">
-                    <form action="<?= base_url('/user/ubahPengaduan')?> " method="post" enctype="multipart/form-data">
+                    <form action="<?= base_url('/user/ubahPengaduan/'.$data['id'])?> " method="post" enctype="multipart/form-data">
                         <?= csrf_field(); ?>
                         <div class="row">
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">

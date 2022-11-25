@@ -87,6 +87,7 @@ class Admin extends BaseController
             'bukti'=> $query1,
             'detail'=>$query,
             'title' => 'POLDA JATENG - Detail Pengaduan',
+            'validation' => $this->validation,
         ];
         return view('admin/pengaduan/detail_pengaduan', $data);
     }
@@ -140,6 +141,6 @@ class Admin extends BaseController
 
         ]);
         session()->setFlashdata('msg', 'Status Pengaduan berhasil Diubah');
-        return redirect()->to('admin/pengaduan');
+        return redirect()->to('admin/pengaduan/detail/$id');
     }
 }

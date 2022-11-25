@@ -59,7 +59,7 @@
                                     <th>Opsi</th>
                                 </tr>
                             </tfoot>
-                            <tbody>
+                            <tbody> 
 
                                 <?php if ($pengaduan) { ?>
                                     <?php foreach ($pengaduan as $num => $data) { ?>
