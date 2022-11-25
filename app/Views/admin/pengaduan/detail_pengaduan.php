@@ -250,8 +250,11 @@
   $(".balasan").hide();
 
   function tampilkanBalasan() {
+   
     $(".balasan").show("slow");
+    $('html,body').animate({scrollTop: document.body.scrollHeight},"slow");
     document.getElementById("kategori").focus();
+    
   };
   function hideBalasan() {
     $(".balasan").hide("slow");

@@ -137,10 +137,10 @@ class Admin extends BaseController
         $date = 
         $this->pengaduan->update($id,[
             'tanggal_diproses' => date("Y-m-d h:i:s"),
-            // 'status' => 'diproses',
+            'status' => 'diproses',
 
         ]);
         session()->setFlashdata('msg', 'Status Pengaduan berhasil Diubah');
-        return redirect()->to('admin/pengaduan/detail/$id');
+        return redirect()->to('admin/detail/'.$id);
     }
 }
