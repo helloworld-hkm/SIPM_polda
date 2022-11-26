@@ -659,3 +659,27 @@ CRITICAL - 2022-11-26 06:40:58 --> Undefined variable: role_echo
 #8 C:\Users\ganda\Documents\GitHub\SIPM_polda\public\index.php(37): CodeIgniter\CodeIgniter->run()
 #9 C:\Users\ganda\Documents\GitHub\SIPM_polda\system\Commands\Server\rewrite.php(43): require_once('C:\\Users\\ganda\\...')
 #10 {main}
+CRITICAL - 2022-11-26 20:23:19 --> Trying to get property 'username' of non-object
+#0 C:\xampp\htdocs\SIPM_polda\app\Controllers\User.php(53): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 53, Array)
+#1 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(832): App\Controllers\User->tentang()
+#2 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#3 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\SIPM_polda\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\SIPM_polda\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2022-11-26 20:24:28 --> Too few arguments to function App\Controllers\Admin::detail(), 0 passed in C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php on line 832 and exactly 1 expected
+#0 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(832): App\Controllers\Admin->detail()
+#1 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#2 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\SIPM_polda\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp\htdocs\SIPM_polda\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+CRITICAL - 2022-11-26 20:31:58 --> unlink(uploads/profile/): Is a directory
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(uploads/...', 'C:\\xampp\\htdocs...', 115, Array)
+#1 C:\xampp\htdocs\SIPM_polda\app\Controllers\User.php(115): unlink('uploads/profile...')
+#2 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(832): App\Controllers\User->simpanProfile('2')
+#3 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#4 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SIPM_polda\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 C:\xampp\htdocs\SIPM_polda\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#7 {main}

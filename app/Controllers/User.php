@@ -111,7 +111,7 @@ class User extends BaseController
 
 
             $nama_foto = 'UserFoto_' . user()->username . '.' . $foto->guessExtension();
-            if (isset($query['foto'])) {
+            if (!(empty($query['foto']))) {
                 unlink('uploads/profile/' . $query['foto']);
             }
             $foto->move('uploads/profile', $nama_foto);
