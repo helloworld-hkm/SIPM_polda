@@ -36,7 +36,7 @@
               <div class="dropdown-menu">
 
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalPengaduan">
-                  Logout
+                  Terima
                 </a>
                 <button class=" dropdown-item tolak" onclick="tampilkanBalasan()">Tolak</button>
               </div>
@@ -141,8 +141,8 @@
         <div class="card-body">
           <div class="mb-3">
             <div class="btn font-weight-bold display-1  text-dark ml-n3 ">Balasan Pengaduan Ditolak </div>
-           
-            
+
+
             <a href="/admin/pengaduan" class="btn btn-primary float-right ml-2 text-white font-weight-bold"><i class="fa fa-paper-plane rounded-cyrcle"></i> Kirim Balasan</a>
             <button class="btn btn-danger float-right" onclick="hideBalasan()"><i class="fas fa-times-circle"></i> Batal</button>
           </div>
@@ -172,7 +172,7 @@
 
           </div>
 
-         
+
 
 
 
@@ -250,15 +250,18 @@
   $(".balasan").hide();
 
   function tampilkanBalasan() {
-   
+
     $(".balasan").show("slow");
-    $('html,body').animate({scrollTop: document.body.scrollHeight},"slow");
+    $('html,body').animate({
+      scrollTop: document.body.scrollHeight
+    }, "slow");
     document.getElementById("kategori").focus();
-    
+
   };
+
   function hideBalasan() {
     $(".balasan").hide("slow");
-   
+
   };
 </script>
 <?= $this->endSection(); ?>

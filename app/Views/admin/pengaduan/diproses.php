@@ -73,13 +73,8 @@
                                         </a> -->
 
                                                 <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuLink"> -->
-                                                <a href="/user/detail/<?= $data['id'] ?>" class="  btn btn-primary"><i class="fa fa-eye"></i> Detail</a>
-                                                <?php if ($data['status'] == 'belum diproses') { ?>
+                                                <a href="/admin/detail/<?= $data['id'] ?>" class="  btn btn-primary"><i class="fa fa-eye"></i> Detail</a>
 
-                                                    <a href="/user/detail" class="  btn btn-success"><i class="fa fa-pen"></i> Edit</a>
-                                                <?php  } else { ?>
-                                                    <button class="  btn btn-secondary"><i class="fa fa-pen"></i> Edit</button>
-                                                <?php  } ?>
 
                                                 <!-- </div> -->
                                                 <!-- </div> -->

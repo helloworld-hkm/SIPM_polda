@@ -73,19 +73,19 @@ class Admin extends BaseController
 
     public function detail($id)
     {
-        $data=$this->db->table('pengaduan');
+        $data = $this->db->table('pengaduan');
         $data->select('*');
-        $data->where('id',$id);
-        $query=$data->get()->getRow();
-        
-        $bukti=$this->db->table('tbl_bukti');
+        $data->where('id', $id);
+        $query = $data->get()->getRow();
+
+        $bukti = $this->db->table('tbl_bukti');
         $bukti->select('*');
-        $bukti->where('pengaduan_id',$id);
-        $query1=$bukti->get()->getRowArray();
-   
+        $bukti->where('pengaduan_id', $id);
+        $query1 = $bukti->get()->getRowArray();
+
         $data = [
-            'bukti'=> $query1,
-            'detail'=>$query,
+            'bukti' => $query1,
+            'detail' => $query,
             'title' => 'POLDA JATENG - Detail Pengaduan',
             'validation' => $this->validation,
         ];
@@ -134,13 +134,13 @@ class Admin extends BaseController
     }
     public function prosesPengaduan($id)
     {
-        $date = 
-        $this->pengaduan->update($id,[
-            'tanggal_diproses' => date("Y-m-d h:i:s"),
-            'status' => 'diproses',
+        $date =
+            $this->pengaduan->update($id, [
+                'tanggal_diproses' => date("Y-m-d h:i:s"),
+                'status' => 'diproses',
 
-        ]);
+            ]);
         session()->setFlashdata('msg', 'Status Pengaduan berhasil Diubah');
-        return redirect()->to('admin/detail/'.$id);
+        return redirect()->to('admin/detail/' . $id);
     }
 }

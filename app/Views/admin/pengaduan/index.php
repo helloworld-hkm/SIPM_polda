@@ -20,12 +20,12 @@
         <div class="row">
             <div class="col-12">
                 <div class="alert alert-success alert-dismissible show fade" role="alert">
-                    
+
                     <div class="alert-body">
-          <button class="close" data-dismiss>x</button>
-          <b><i class="fa fa-check"></i></b>
-          <?= session()->getFlashdata('msg'); ?>
-        </div>
+                        <button class="close" data-dismiss>x</button>
+                        <b><i class="fa fa-check"></i></b>
+                        <?= session()->getFlashdata('msg'); ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -59,7 +59,7 @@
                                     <th>Opsi</th>
                                 </tr>
                             </tfoot>
-                            <tbody> 
+                            <tbody>
 
                                 <?php if ($pengaduan) { ?>
                                     <?php foreach ($pengaduan as $num => $data) { ?>
@@ -79,12 +79,7 @@
 
                                                 <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuLink"> -->
                                                 <a href="/admin/detail/<?= $data['id'] ?>" class="  btn btn-primary"><i class="fa fa-eye"></i> Detail</a>
-                                                <?php if ($data['status'] == 'belum diproses') { ?>
 
-                                                    <a href="/user/detail" class="  btn btn-success"><i class="fa fa-pen"></i> Edit</a>
-                                                <?php  } else { ?>
-                                                    <button class="  btn btn-secondary"><i class="fa fa-pen"></i> Edit</button>
-                                                <?php  } ?>
 
                                                 <!-- </div> -->
                                                 <!-- </div> -->
@@ -113,14 +108,11 @@
 <?= $this->endSection(); ?>
 <?= $this->section('additional-js'); ?>
 <script>
-       window.setTimeout(function() {
-      $(".alert").fadeTo(500, 0).slideUp(500, function() {
-        $($this).remove();
-      })
+    window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function() {
+            $($this).remove();
+        })
 
     }, 3000);
-
-
- 
 </script>
 <?= $this->endSection(); ?>

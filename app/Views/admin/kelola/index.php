@@ -65,7 +65,7 @@
                                                 <a href="/admin/detail" class="  btn btn-primary"><i class="fa fa-eye"></i> Detail</a>
                                                 <?php if ($data['id'] == 'belum diproses') { ?>
 
-                                                    <a href="/user/detail" class="  btn btn-success"><i class="fa fa-pen"></i> Edit</a>
+                                                    <a href="/admin/detail" class="  btn btn-success"><i class="fa fa-pen"></i> Edit</a>
                                                 <?php  } else { ?>
                                                     <button class="  btn btn-secondary"><i class="fa fa-pen"></i> Edit</button>
                                                 <?php  } ?>

@@ -12,6 +12,7 @@
     <title><?= $title; ?></title>
 
     <!-- Custom fonts for this template-->
+    <link href="<?php echo base_url() ?>/assets/img/polda.ico" rel="icon">
     <link href="<?= base_url() ?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
@@ -118,7 +119,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= user()->username; ?></span>
-                                <img class="img-profile rounded-circle" src="<?= base_url() ?>/sbassets/img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="/uploads/profile/<?= user()->foto; ?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
