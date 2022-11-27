@@ -1,8 +1,34 @@
 <?= $this->extend('admin/templates/index') ?>
 
 <?= $this->section('content') ?>
+
+
 <div class="container-fluid">
 
+    <?php if (session()->getFlashdata('error-msg')) : ?>
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-danger" role="alert">
+                    <?= session()->getFlashdata('error-msg'); ?>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('msg')) : ?>
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-success alert-dismissible show fade" role="alert">
+
+                    <div class="alert-body">
+                        <button class="close" data-dismiss>x</button>
+                        <b><i class="fa fa-check"></i></b>
+                        <?= session()->getFlashdata('msg'); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
     <div class="row">
         <div class="col-12">
 
@@ -12,11 +38,11 @@
             <div class="card shadow px-5 py-4">
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-12">
-                        <img class="card-img-top p-2" src="<?= base_url() ?>/sbassets/img/undraw_profile.svg" alt="Image profile" height="290">
+                        <img class="card-img-top p-2" src="<?= empty(user()->foto) ? '/sbassets/img/undraw_profile.svg' : '/uploads/profile/' . user()->foto; ?>" alt="Image profile" height="290">
                     </div>
                     <div class="col-lg-8 col-md-8 col-sm-12">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><span class="badge badge-info"> <?= user()->id; ?></span></li>
+                            <li class="list-group-item"><span class="badge badge-info"> <?= $role; ?></span></li>
                             <li class="list-group-item "><i class="fa fa-user mr-2 "></i><?= user()->username; ?></li>
                             <li class="list-group-item"><i class="fa fa-envelope mr-1"></i> <?= $user->email ?></li>
                             <li class="list-group-item"><i class="fa fa-calendar mr-1"></i> terdaftar sejak. <?php $date = date_create($user->created_at);
@@ -46,35 +72,35 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="">
+                <form action="/admin/simpanProfile/<?= $user->id; ?>" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
                         <?= csrf_field(); ?>
                         <input type="hidden" name="id" id="userid">
                         <div class="form-group">
-                            <label for="user_image">Foto Profil</label>
-                            <input type="file" name="user_image" id="user_image" class="form-control p-1">
+                            <label for="foto">Foto Profil</label>
+                            <input type="file" name="foto" id="foto" class="form-control p-1">
                             <div class="invalid-feedback"></div>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="nama">Nama</label>
                             <input type="text" name="nama" id="nama" class="form-control">
                             <div class="invalid-feedback"></div>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label for="username">Username</label>
-                            <input type="text" name="username" id="username" class="form-control">
+                            <input type="text" name="username" id="username" class="form-control" value="<?= $user->username ?>">
                             <div class="invalid-feedback"></div>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" name="email" id="email" class="form-control">
+                            <input type="email" name="email" id="email" class="form-control" value="<?= $user->email ?>">
                             <div class="invalid-feedback"></div>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" name="password" id="password" class="form-control" placeholder="Masukkan password untuk konfirmasi perubahan" autocomplete="false">
                             <div class="invalid-feedback"></div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -125,3 +151,13 @@
 
 </div>
 <?= $this->endSection() ?>
+<?= $this->section('additional-js'); ?>
+<script>
+    window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function() {
+            $($this).remove();
+        })
+
+    }, 3000);
+</script>
+<?= $this->endSection(); ?>

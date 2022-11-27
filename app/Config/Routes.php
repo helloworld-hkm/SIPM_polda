@@ -35,6 +35,7 @@ $routes->get('/', 'Home::index');
 $routes->get('/user', 'User::index', ['filter' => 'role:user']);
 $routes->put('/user/detail/(:num)', 'user::detail/$1', ['filter' => 'role:user']);
 $routes->put('/user/profile/(:num)', 'user::profile/$1', ['filter' => 'role:user']);
+$routes->put('/user/tentang/(:num)', 'user::tentang/$1', ['filter' => 'role:user']);
 $routes->put('/user/ubah/simpanProfile/(:num)', 'user::simpanProfile/$1', ['filter' => 'role:user']);
 
 $routes->get('/user/pengaduan', 'User::pengaduan', ['filter' => 'role:user']);
@@ -44,8 +45,10 @@ $routes->put('/user/ubah/ubahPengaduan/(:num)', 'user::ubahPengaduan/$1', ['filt
 $routes->get('/admin', 'Admin::index', ['filter' => 'role:admin']);
 $routes->get('/admin/pengaduan', 'Admin::pengaduan', ['filter' => 'role:admin']);
 $routes->put('/admin/detail/(:num)', 'admin::detail/$1', ['filter' => 'role:admin']);
+$routes->put('/admin/simpanBalasan/(:num)', 'admin::simpanBalasan/$1', ['filter' => 'role:admin']);
 $routes->put('/admin/prosesPengaduan/(:num)', 'admin::prosesPengaduan/$1', ['filter' => 'role:admin']);
-
+$routes->put('/admin/terimaPengaduan/(:num)', 'admin::terimaPengaduan/$1', ['filter' => 'role:admin']);
+$routes->put('/admin/ubah/simpanProfile/(:num)', 'admin::simpanProfile/$1', ['filter' => 'role:user']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing

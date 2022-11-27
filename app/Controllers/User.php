@@ -110,7 +110,7 @@ class User extends BaseController
         } else {
 
 
-            $nama_foto = 'UserFoto_' . user()->username . '.' . $foto->guessExtension();
+            $nama_foto = 'UserFoto_' . $this->request->getPost('username') . '.' . $foto->guessExtension();
             if (!(empty($query['foto']))) {
                 unlink('uploads/profile/' . $query['foto']);
             }
@@ -122,11 +122,7 @@ class User extends BaseController
                 'foto' => $nama_foto
             ]);
         }
-
-
-
-
-
+        session()->setFlashdata('msg', 'Profil Pengaduan  berhasil Diubah');
         return redirect()->to('/user');
     }
 
@@ -251,6 +247,11 @@ class User extends BaseController
         $data->where('id', $id);
         $query = $data->get();
 
+        $d = $this->db->table('balasan');
+        $d->select('*');
+        $d->where('id_pengaduan', $id);
+        $balasan = $d->get()->getRow();
+
         $bukti = $this->db->table('tbl_bukti');
         $bukti->select('*');
         $bukti->where('pengaduan_id', $id);
@@ -259,7 +260,8 @@ class User extends BaseController
         $ex = [
             'bukti' => $query1,
             'detail' => $hasil = $query->getRow(),
-            'title' => 'Detail Pengaduan'
+            'title' => 'Detail Pengaduan',
+            'balasan' => $balasan
 
         ];
 

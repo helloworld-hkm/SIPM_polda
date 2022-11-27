@@ -5,6 +5,9 @@ namespace App\Controllers;
 use App\Models\Pengaduan;
 use App\Models\bukti;
 use App\Models\user;
+use App\Models\balasan;
+use App\Models\profil;
+
 
 class Admin extends BaseController
 {
@@ -17,6 +20,8 @@ class Admin extends BaseController
         $this->pengaduan = new pengaduan();
         $this->bukti = new bukti();
         $this->user = new user();
+        $this->balasan = new balasan();
+        $this->profil = new profil;
         $this->validation = \Config\Services::validation();
     }
     public function index()
@@ -27,9 +32,19 @@ class Admin extends BaseController
         // $this->builder->where('username', $userlogin);
         // $query = $this->builder->get();
 
+        $userlogin = user()->id;
+        $data = $this->db->table('pengaduan');
+        $query1 = $data->get()->getResult();
+        $query2 = $data->where('status', 'diproses')->get()->getResult();
+        $query3 = $data->where('status', 'selesai')->get()->getResult();
+        $semua = count($query1);
+
         $data = [
             // 'user'=> $query->getResult(),
-            'title' => 'POLDA JATENG - Home'
+            'title' => 'POLDA JATENG - Home',
+            'semua' => $semua,
+            'proses' => count($query2),
+            'selesai' => count($query3),
         ];
 
         return view('admin/home', $data);
@@ -37,15 +52,56 @@ class Admin extends BaseController
     public function tentang()
     {
         $userlogin = user()->username;
+        $userid = user()->id;
+        $role = $this->db->table('auth_groups_users')->where('user_id', $userid)->get()->getRow();
+        // dd($role);
+        $role->group_id == '1' ? $role_echo = 'Admin' : $role_echo = 'User';
+
+
         $builder = $this->db->table('user');
         $builder->select('username,email,user,created_at');
         $this->builder->where('username', $userlogin);
         $query = $this->builder->get();
         $data = [
             'user' => $query->getRow(),
-            'title' => 'Profile'
+            'title' => 'Profile',
+            'role' => $role_echo
         ];
         return view('admin/profile', $data);
+    }
+
+    public function simpanProfile($id)
+    {
+        $userlogin = user()->username;
+        $builder = $this->db->table('users');
+        $builder->select('*');
+        $query = $builder->where('username', $userlogin)->get()->getRowArray();
+
+
+
+        $foto = $this->request->getFile('foto');
+        if ($foto->getError() == 4) {
+            $this->profil->update($id, [
+                'email' => $this->request->getPost('email'),
+                'username' => $this->request->getPost('username'),
+            ]);
+        } else {
+
+
+            $nama_foto = 'AdminFOTO' . $this->request->getPost('username') . '.' . $foto->guessExtension();
+            if (!(empty($query['foto']))) {
+                unlink('uploads/profile/' . $query['foto']);
+            }
+            $foto->move('uploads/profile', $nama_foto);
+
+            $this->profil->update($id, [
+                'email' => $this->request->getPost('email'),
+                'username' => $this->request->getPost('username'),
+                'foto' => $nama_foto
+            ]);
+        }
+        session()->setFlashdata('msg', 'Profil Pengaduan  berhasil Diubah');
+        return redirect()->to('/admin/tentang/' . $id);
     }
 
     public function pengguna()
@@ -78,6 +134,11 @@ class Admin extends BaseController
         $data->where('id', $id);
         $query = $data->get()->getRow();
 
+        $d = $this->db->table('balasan');
+        $d->select('*');
+        $d->where('id_pengaduan', $id);
+        $balasan = $d->get()->getRow();
+
         $bukti = $this->db->table('tbl_bukti');
         $bukti->select('*');
         $bukti->where('pengaduan_id', $id);
@@ -86,9 +147,11 @@ class Admin extends BaseController
         $data = [
             'bukti' => $query1,
             'detail' => $query,
+            'balasan' => $balasan,
             'title' => 'POLDA JATENG - Detail Pengaduan',
             'validation' => $this->validation,
         ];
+
         return view('admin/pengaduan/detail_pengaduan', $data);
     }
 
@@ -140,6 +203,58 @@ class Admin extends BaseController
                 'status' => 'diproses',
 
             ]);
+        session()->setFlashdata('msg', 'Status Pengaduan berhasil Diubah');
+        return redirect()->to('admin/detail/' . $id);
+    }
+    public function terimaPengaduan($id)
+    {
+
+        $this->pengaduan->update($id, [
+            'tanggal_selesai' => date("Y-m-d h:i:s"),
+            'status' => 'selesai',
+            'status_akhir' => 'diterima'
+
+        ]);
+        session()->setFlashdata('msg', 'Status Pengaduan berhasil Diubah');
+        return redirect()->to('admin/detail/' . $id);
+    }
+
+    public function simpanBalasan($id)
+    {
+        $rules = [
+            'kategori' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kategori  wajib diisi.'
+                ]
+            ],
+            'balasan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Isi Balasan wajib diisi.',
+
+                ]
+            ],
+
+        ];
+
+        if (!$this->validate($rules)) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('/admin/detail/' . $id)->withInput('validation', $validation);
+        }
+        $this->pengaduan->update($id, [
+            'tanggal_selesai' => date("Y-m-d h:i:s"),
+            'status' => 'selesai',
+            'status_akhir' => 'ditolak'
+
+        ]);
+        $data = [
+            'id_pengaduan' => $id,
+            'kategori' => $this->request->getPost('kategori'),
+            'balasan' => $this->request->getPost('balasan')
+
+        ];
+        $this->balasan->save($data);
         session()->setFlashdata('msg', 'Status Pengaduan berhasil Diubah');
         return redirect()->to('admin/detail/' . $id);
     }

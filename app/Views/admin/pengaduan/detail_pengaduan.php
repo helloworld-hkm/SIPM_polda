@@ -50,31 +50,31 @@
           <div class="row">
             <div class="col-md-3">Nama Pengadu</div>
             <div class="col-md-1 d-none d-md-block">:</div>
-            <div class="col-md-8"><?= $detail->nama_pengadu ?></div>
+            <div class="col-md-8 ml-n5"><?= $detail->nama_pengadu ?></div>
           </div>
           <hr />
           <div class="row">
             <div class="col-md-3">Status Pengaduan</div>
             <div class="col-md-1 d-none d-md-block">:</div>
-            <div class="col-md-8"><?= $detail->status ?></div>
+            <div class="col-md-8 ml-n5"><?= $detail->status; ?> <?= $detail->status == 'selesai' ? '(' . $detail->status_akhir . ')' : '' ?></div>
           </div>
           <hr />
           <div class="row">
             <div class="col-md-3">Tanggal Pengaduan</div>
             <div class="col-md-1 d-none d-md-block">:</div>
-            <div class="col-md-8"><?= $detail->tanggal_pengaduan ?></div>
+            <div class="col-md-8 ml-n5"><?= $detail->tanggal_pengaduan ?></div>
           </div>
           <hr />
           <div class="row">
             <div class="col-md-3">Perihal</div>
             <div class="col-md-1 d-none d-md-block">:</div>
-            <div class="col-md-8"><?= $detail->perihal ?></div>
+            <div class="col-md-8 ml-n5"><?= $detail->perihal ?></div>
           </div>
           <hr />
           <div class="row">
             <div class="col-md-3">Rincian</div>
             <div class="col-md-1 d-none d-md-block">:</div>
-            <div class="col-md-8">
+            <div class="col-md-8 ml-n5">
               <span class="text-justify"> <?= $detail->detail ?></span>
             </div>
           </div>
@@ -82,7 +82,7 @@
           <div class="row">
             <div class="col-md-3">Foto Bukti</div>
             <div class="col-md-1 d-none d-md-block">:</div>
-            <div class="col-md-8">
+            <div class="col-md-8 ml-n5">
               <a href="/uploads/<?= $bukti['img_satu'] ?>" target="_blank"><img src="/uploads/<?= $bukti['img_satu'] ?>" class="img-fluid img-thumbnail" width="100" /></a>
               <?php if ($bukti['img_dua'] != 'null') : ?>
                 <a href="/uploads/<?= $bukti['img_dua'] ?>" target="_blank"><img src="/uploads/<?= $bukti['img_dua'] ?>" class="img-fluid img-thumbnail" width="100" /></a>
@@ -132,87 +132,88 @@
       </div>
     </div>
   </div>
+  <?php if ($detail->status_akhir == 'ditolak') { ?>
+    <div class="row   mt-2 ">
+      <div class="col-12">
+
+        <div class="card shadow card-detail">
+
+
+          <div class="card-body">
+            <div class="mb-3">
+              <div class="btn font-weight-bold display-1  text-dark ml-n3 ">Balasan Pengaduan Ditolak </div>
+
+
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-3">Kategori</div>
+              <div class="col-md-1 d-none d-md-block">:</div>
+              <div class="col-md-8 ml-n5"><?= $balasan->kategori ?></div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-md-3">balasan</div>
+              <div class="col-md-1 d-none d-md-block">:</div>
+              <div class="col-md-8 ml-n5"><?= $balasan->balasan; ?></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  <?php } ?>
   <div class="row balasan   mt-2 ">
     <div class="col-12">
 
       <div class="card shadow card-detail">
 
+        <form action="<?= base_url('/admin/simpanBalasan/' . $detail->id) ?> " method="post" enctype="multipart/form-data">
+          <?= csrf_field(); ?>
+          <div class="card-body">
+            <div class="mb-3">
+              <div class="btn font-weight-bold display-1  text-dark ml-n3 ">Balasan Pengaduan Ditolak </div>
 
-        <div class="card-body">
-          <div class="mb-3">
-            <div class="btn font-weight-bold display-1  text-dark ml-n3 ">Balasan Pengaduan Ditolak </div>
 
+              <button class="btn btn-primary float-right ml-2 text-white font-weight-bold"><i class="fa fa-paper-plane rounded-cyrcle"></i> Kirim Balasan</button>
 
-            <a href="/admin/pengaduan" class="btn btn-primary float-right ml-2 text-white font-weight-bold"><i class="fa fa-paper-plane rounded-cyrcle"></i> Kirim Balasan</a>
-            <button class="btn btn-danger float-right" onclick="hideBalasan()"><i class="fas fa-times-circle"></i> Batal</button>
-          </div>
-
-          <div class="row mb-3">
-            <div class="col-md-2"> <label for="kategori">Kategori </label></div>
-            <div class="col-md-1 d-none d-md-block">:</div>
-            <div class="col-md-5">
-              <input type="text" name="kategori" id="kategori" class="form-control ml-n5  <?= $validation->hasError('kategori') ? 'is-invalid' : ''; ?>" value="<?= old('kategori'); ?>">
-              <div class="invalid-feedback">
-                <?= $validation->getError('kategori'); ?>
-              </div>
+              <button class="btn btn-danger float-right" onclick="hideBalasan()"><i class="fas fa-times-circle"></i> Batal</button>
             </div>
 
-          </div>
-
-          <div class="row">
-            <div class="col-md-2"> <label for="balasan">Jelaskan lebih rinci</label></div>
-            <div class="col-md-1 d-none d-md-block">:</div>
-            <div class="col-md-5">
-              <textarea name="isi_pengaduan" id="isi" cols="30" rows="13" class="form-control ml-n5  <?= $validation->hasError('isi_pengaduan') ? 'is-invalid' : ''; ?>"><?= old('isi_pengaduan'); ?></textarea>
-              <div class="invalid-feedback">
-                <? dd($validation) ?>
-                <?= $validation->getError('isi_pengaduan'); ?>
-              </div>
-            </div>
-
-          </div>
-
-
-
-
-
-
-          <div class="accordion" id="accordionExample">
-            <div class="">
-              <div class="" id="headingOne">
-                <h5 class="mb-0"></h5>
-              </div>
-
-              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                <div class="card-body">
-                  <h1>Timeline Pengaduan</h1>
-                  <ul class="sessions">
-                    <li class="li-diajukan">
-                      <div class="time"><?= $detail->tanggal_pengaduan ?></div>
-                      <p>Laporan Diajukan</p>
-                    </li>
-                    <?php if ($detail->tanggal_diproses != '0000-00-00 00:00:00') { ?>
-                      <li class="li-diproses">
-                        <div class="time"><?= $detail->tanggal_diproses ?></div>
-                        <p>Laporan Diproses</p>
-                      </li>
-                    <?php } ?>
-                    <?php if ($detail->tanggal_selesai != '0000-00-00 00:00:00') { ?>
-                      <li class="li-selesai">
-                        <div class="time">09:30 AM</div>
-                        <p>Laporan Selesai</p>
-                        <p>
-                          Dengan Status:
-                          <?= $detail->status_akhir ?>
-                        </p>
-                      </li>
-                    <?php } ?>
-                  </ul>
+            <div class="row mb-3">
+              <div class="col-md-2"> <label for="kategori">Kategori </label></div>
+              <div class="col-md-1 d-none d-md-block">:</div>
+              <div class="col-md-5">
+                <input type="text" name="kategori" id="kategori" class="form-control ml-n5  <?= $validation->hasError('kategori') ? 'is-invalid' : ''; ?>" value="<?= old('kategori'); ?>">
+                <div class="invalid-feedback ml-n5">
+                  <?= $validation->getError('kategori'); ?>
                 </div>
               </div>
+
             </div>
+
+            <div class="row">
+              <div class="col-md-2"> <label for="balasan">Jelaskan lebih rinci</label></div>
+              <div class="col-md-1 d-none d-md-block">:</div>
+              <div class="col-md-5">
+                <textarea name="balasan" id="isi" cols="30" rows="13" class="form-control ml-n5  <?= $validation->hasError('balasan') ? 'is-invalid' : ''; ?>"><?= old('balasan'); ?></textarea>
+                <div class="invalid-feedback ml-n5">
+                  <? dd($validation) ?>
+                  <?= $validation->getError('balasan'); ?>
+                </div>
+              </div>
+
+            </div>
+
+
+
+
+
+
+
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>
@@ -230,7 +231,7 @@
       <div class="modal-body">Tekan "Terima" jika akan mengubah status laporan menjadi diterima</div>
       <div class="modal-footer">
         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-        <a class="btn btn-success" href="<?= base_url() ?>/logout">Terima</a>
+        <a class="btn btn-success" href="/admin/terimaPengaduan/<?= $detail->id ?>">Terima</a>
       </div>
     </div>
   </div>

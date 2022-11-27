@@ -12,7 +12,7 @@
             <div class="card shadow px-5 py-4">
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-12">
-                        <img class="card-img-top p-2" src=" /uploads/profile/<?= $user->foto; ?>" alt="Image profile" height="290">
+                        <img class="card-img-top p-2" src="<?= empty(user()->foto) ? '/sbassets/img/undraw_profile.svg' : '/uploads/profile/' . user()->foto; ?>" alt="Image profile" height="290">
                     </div>
                     <div class="col-lg-8 col-md-8 col-sm-12">
                         <ul class="list-group list-group-flush">

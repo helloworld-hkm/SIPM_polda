@@ -40,7 +40,7 @@
                                     <th>No</th>
                                     <th>Email</th>
                                     <th>Username</th>
-                                    <th>opsi</th>
+                                    <!-- <th>opsi</th> -->
                                 </tr>
                             </thead>
                             <tfoot>
@@ -48,7 +48,7 @@
                                     <th>No</th>
                                     <th>Email</th>
                                     <th>Username</th>
-                                    <th>Opsi</th>
+                                    <!-- <th>Opsi</th> -->
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -61,19 +61,13 @@
                                             <td><?= $num + 1; ?></td>
                                             <td><?= $data['email']; ?></td>
                                             <td><?= $data['username']; ?></td>
-                                            <td>
+                                            <!-- <td>
                                                 <a href="/admin/detail" class="  btn btn-primary"><i class="fa fa-eye"></i> Detail</a>
-                                                <?php if ($data['id'] == 'belum diproses') { ?>
+                                           
 
-                                                    <a href="/admin/detail" class="  btn btn-success"><i class="fa fa-pen"></i> Edit</a>
-                                                <?php  } else { ?>
-                                                    <button class="  btn btn-secondary"><i class="fa fa-pen"></i> Edit</button>
-                                                <?php  } ?>
+                                           
 
-                                                <!-- </div> -->
-                                                <!-- </div> -->
-
-                                            </td>
+                                            </td> -->
                                         </tr>
                                     <?php   } ?>
                                     <!-- end of foreach                -->

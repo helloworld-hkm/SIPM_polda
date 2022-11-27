@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use CodeIgniter\Model;
 
 class Pengaduan extends Model
@@ -8,7 +9,7 @@ class Pengaduan extends Model
     protected $table = 'pengaduan';
     // protected $useTimestamps = true;
     protected $primarykey = 'id';
-    protected $allowedFields = ['id_user','nama_pengadu', 'perihal', 'detail', 'tanggal_pengaduan','tanggal_diproses', 'status'];
+    protected $allowedFields = ['id_user', 'nama_pengadu', 'perihal', 'detail', 'tanggal_pengaduan', 'tanggal_diproses', 'status', 'status_akhir', 'tanggal_selesai'];
 
     public function getPengaduan($id = false)
     {

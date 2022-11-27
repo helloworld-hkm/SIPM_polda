@@ -105,6 +105,7 @@
     </div>
 
 </div>
+
 <?= $this->endSection(); ?>
 <?= $this->section('additional-js'); ?>
 <script>
