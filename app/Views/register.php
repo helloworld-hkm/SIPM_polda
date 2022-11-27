@@ -38,15 +38,16 @@
                                 </div>
                             <?php endif; ?>
 
+                            <?= view('Myth\Auth\Views\_message_block') ?>
                             <form action="<?= route_to('register') ?>" method="post" class="user">
                                 <?= csrf_field() ?>
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control  form-control-user<?php if (session('errors.username')) : ?>is-invalid<?php endif ?> " id="exampleInputEmail" name="username" placeholder="<?= lang('Auth.username') ?>" value="<?= old('username') ?>">
+                                    <input type="text" class="form-control <?php if (session('errors.username')) : ?>is-invalid<?php endif ?> " id="exampleInputEmail" name="username" placeholder="<?= lang('Auth.username') ?>" value="<?= old('username') ?>">
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user
+                                    <input type="email" class="form-control
                              <?php if (session('errors.email')) : ?>is-invalid<?php endif ?>" name="email" placeholder="<?= lang('Auth.email') ?> " value="<?= old('email') ?>">
                                     <small id="emailHelp" class="form-text text-muted"><?= lang('Auth.weNeverShare') ?></small>
                                 </div>
@@ -75,8 +76,7 @@
                             <?php endif; ?>
                             <?php if ($config->allowRegistration) : ?>
                                 <div class="text-center">
-                                    <a class="small" href="<?= route_to('register') ?>">
-                                        <?= lang('Auth.needAnAccount') ?></a>
+                                    <?= lang('Auth.alreadyRegistered') ?> <a href="<?= url_to('login') ?>"><?= lang('Auth.signIn') ?></a>
                                 </div>
                             <?php endif; ?>
                         </div>

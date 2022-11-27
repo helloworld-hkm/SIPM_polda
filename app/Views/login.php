@@ -39,12 +39,12 @@
                                     </div>
                                 </div>
                             <?php endif; ?>
-
+                            <?= view('Myth\Auth\Views\_message_block') ?>
                             <form action="<?= route_to('login') ?>" method="post" class="user">
                                 <?= csrf_field(); ?>
                                 <div class="form-group ">
                                     <input type="text" class="form-control <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" name="login" placeholder="<?= lang('Auth.emailOrUsername') ?>">
-                                    <div class="invalid-feedback pl-1">
+                                    <div class="invalid-feedback">
                                         <?= session('errors.login') ?>
                                     </div>
                                 </div>
@@ -59,28 +59,28 @@
                                 </button>
 
                             </form>
-                      
+
                         </div>
                     </div>
                 </div>
-             <div class="row">
-                <div class="col-lg text-center mb-3 mt-n4">   
-                <hr>
-                            <?php if ($config->activeResetter) : ?>
+                <div class="row">
+                    <div class="col-lg text-center mb-3 mt-n4">
+                        <hr>
+                        <?php if ($config->activeResetter) : ?>
 
-                                <div class="text-center">
-                                    <a class="small" href="<?= route_to('forgot') ?>">
-                                        <?= lang('Auth.forgotYourPassword') ?></a>
-                                </div>
-                            <?php endif; ?>
-                            <?php if ($config->allowRegistration) : ?>
-                                <div class="text-center">
-                                    <a class="small" href="<?= route_to('register') ?>">
-                                        <?= lang('Auth.needAnAccount') ?></a>
-                                </div>
-                            <?php endif; ?>
+                            <div class="text-center">
+                                <a class="small" href="<?= route_to('forgot') ?>">
+                                    <?= lang('Auth.forgotYourPassword') ?></a>
+                            </div>
+                        <?php endif; ?>
+                        <?php if ($config->allowRegistration) : ?>
+                            <div class="text-center">
+                                <a class="small" href="<?= route_to('register') ?>">
+                                    <?= lang('Auth.needAnAccount') ?></a>
+                            </div>
+                        <?php endif; ?>
+                    </div>
                 </div>
-             </div>
             </div>
         </div>
 
