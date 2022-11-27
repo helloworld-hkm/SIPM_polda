@@ -155,6 +155,29 @@ class Admin extends BaseController
         return view('admin/pengaduan/detail_pengaduan', $data);
     }
 
+    public function updatePassword($id)
+    {
+        $passwordLama = $this->request->getPost('passwordLama');
+        $passwordbaru = $this->request->getPost('passwordBaru');
+        $konfirm = $this->request->getPost('konfirm');
+        $builder = $this->db->table('user');
+
+        $this->builder->where('id', $id);
+        $query = $this->builder->get()->getRow();
+        $verify_pass = password_verify($passwordLama, $query->password_hash);
+        if ($verify_pass) {
+            $data = [
+                'password' => password_hash($passwordbaru, PASSWORD_DEFAULT),
+            ];
+            $this->user->update($id, $data);
+            session()->setFlashdata('success', 'Password berhasil Diubah');
+            return redirect()->to('/admin/tentang/' . $id);
+        } else {
+            session()->setFlashdata('error-msg', 'Password Lama tidak sesuai');
+            return redirect()->to(base_url('admin/tentang/' . $id));
+        }
+    }
+
     public function pengaduan_diproses()
     {
         $this->builder = $this->db->table('pengaduan');

@@ -120,23 +120,23 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="">
+                <form action="/admin/updatePassword/<?= user()->id ?>" method="post">
                     <div class="modal-body">
                         <?= csrf_field(); ?>
                         <input type="hidden" name="id" id="user_id">
                         <div class="form-group">
-                            <label for="password">Password Lama</label>
-                            <input type="password" name="current-password" id="current-password" class="form-control" placeholder="Masukkan password saat ini" autocomplete="false">
+                            <label for="passwordLama">Password Lama</label>
+                            <input type="password" name="passwordLama" id="passwordLama" class="form-control" placeholder="Masukkan password saat ini" autocomplete="false">
                             <div class="invalid-feedback"></div>
                         </div>
                         <div class="form-group">
-                            <label for="password">Password Baru</label>
-                            <input type="password" name="new-password" id="new-password" class="form-control" placeholder="Masukkan password baru" autocomplete="false">
+                            <label for="passwordBaru">Password Baru</label>
+                            <input type="password" name="passwordBaru" id="passwordBaru" class="form-control" placeholder="Masukkan password baru" autocomplete="false">
                             <div class="invalid-feedback"></div>
                         </div>
                         <div class="form-group">
-                            <label for="password">Konfirmasi Password</label>
-                            <input type="password" name="confirm-password" id="confirm-password" class="form-control" placeholder="Konfirmasi password baru" autocomplete="false">
+                            <label for="konfirm">Konfirmasi Password</label>
+                            <input type="password" name="konfirm" id="konfirm" class="form-control" placeholder="Konfirmasi password baru" autocomplete="false">
                             <div class="invalid-feedback"></div>
                         </div>
                     </div>
