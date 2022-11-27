@@ -230,3 +230,65 @@ CRITICAL - 2022-11-27 21:07:27 --> Too few arguments to function App\Controllers
 #3 C:\xampp\htdocs\SIPM_polda\public\index.php(37): CodeIgniter\CodeIgniter->run()
 #4 C:\xampp\htdocs\SIPM_polda\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
 #5 {main}
+CRITICAL - 2022-11-27 22:50:40 --> Object of class stdClass could not be converted to string
+#0 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(832): App\Controllers\Admin->updatePassword('4')
+#1 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#2 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\SIPM_polda\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp\htdocs\SIPM_polda\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+CRITICAL - 2022-11-27 23:11:16 --> There is no data to update.
+#0 C:\xampp\htdocs\SIPM_polda\system\BaseModel.php(846): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+#1 C:\xampp\htdocs\SIPM_polda\system\Model.php(651): CodeIgniter\BaseModel->update(Array, Array)
+#2 C:\xampp\htdocs\SIPM_polda\app\Controllers\Admin.php(172): CodeIgniter\Model->update('4', Array)
+#3 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(832): App\Controllers\Admin->updatePassword('4')
+#4 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#5 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SIPM_polda\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\SIPM_polda\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#8 {main}
+CRITICAL - 2022-11-27 23:12:21 --> There is no data to update.
+#0 C:\xampp\htdocs\SIPM_polda\system\BaseModel.php(846): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+#1 C:\xampp\htdocs\SIPM_polda\system\Model.php(651): CodeIgniter\BaseModel->update(Array, Array)
+#2 C:\xampp\htdocs\SIPM_polda\app\Controllers\Admin.php(172): CodeIgniter\Model->update('4', Array)
+#3 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(832): App\Controllers\Admin->updatePassword('4')
+#4 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#5 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SIPM_polda\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\SIPM_polda\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#8 {main}
+CRITICAL - 2022-11-27 23:12:38 --> There is no data to update.
+#0 C:\xampp\htdocs\SIPM_polda\system\BaseModel.php(846): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+#1 C:\xampp\htdocs\SIPM_polda\system\Model.php(651): CodeIgniter\BaseModel->update(Array, Array)
+#2 C:\xampp\htdocs\SIPM_polda\app\Controllers\Admin.php(172): CodeIgniter\Model->update('4', Array)
+#3 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(832): App\Controllers\Admin->updatePassword('4')
+#4 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#5 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SIPM_polda\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\SIPM_polda\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#8 {main}
+CRITICAL - 2022-11-27 23:13:47 --> There is no data to update.
+#0 C:\xampp\htdocs\SIPM_polda\system\BaseModel.php(846): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+#1 C:\xampp\htdocs\SIPM_polda\system\Model.php(651): CodeIgniter\BaseModel->update(Array, Array)
+#2 C:\xampp\htdocs\SIPM_polda\app\Controllers\Admin.php(173): CodeIgniter\Model->update('4', Array)
+#3 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(832): App\Controllers\Admin->updatePassword('4')
+#4 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#5 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SIPM_polda\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\SIPM_polda\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#8 {main}
+CRITICAL - 2022-11-27 23:42:51 --> Object of class stdClass could not be converted to string
+#0 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(832): App\Controllers\Admin->updatePassword('4')
+#1 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#2 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\SIPM_polda\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp\htdocs\SIPM_polda\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+CRITICAL - 2022-11-27 23:52:01 --> Call to undefined method App\Models\User::setPassword
+#0 C:\xampp\htdocs\SIPM_polda\app\Controllers\Admin.php(178): CodeIgniter\Model->__call('setPassword', Array)
+#1 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(832): App\Controllers\Admin->updatePassword('4')
+#2 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#3 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\SIPM_polda\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\SIPM_polda\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#6 {main}

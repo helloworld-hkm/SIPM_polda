@@ -48,9 +48,9 @@ $routes->put('/admin/detail/(:num)', 'admin::detail/$1', ['filter' => 'role:admi
 $routes->put('/admin/simpanBalasan/(:num)', 'admin::simpanBalasan/$1', ['filter' => 'role:admin']);
 $routes->put('/admin/prosesPengaduan/(:num)', 'admin::prosesPengaduan/$1', ['filter' => 'role:admin']);
 $routes->put('/admin/terimaPengaduan/(:num)', 'admin::terimaPengaduan/$1', ['filter' => 'role:admin']);
-$routes->put('/admin/ubah/simpanProfile/(:num)', 'admin::simpanProfile/$1', ['filter' => 'role:user']);
-$routes->put('/admin/ubah/updatePassword/(:num)', 'admin::updatePassword/$1', ['filter' => 'role:user']);
-
+$routes->put('/admin/ubah/simpanProfile/(:num)', 'admin::simpanProfile/$1', ['filter' => 'role:admin']);
+$routes->put('/admin/ubah/updatePassword/(:num)', 'admin::updatePassword/$1', ['filter' => 'role:admin']);
+$routes->put('/user/updatePassword/(:num)', 'user::updatePassword/$1', ['filter' => 'role:user']);
 
 /*
  * --------------------------------------------------------------------

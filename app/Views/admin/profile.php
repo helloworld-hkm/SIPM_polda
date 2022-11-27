@@ -8,8 +8,13 @@
     <?php if (session()->getFlashdata('error-msg')) : ?>
         <div class="row">
             <div class="col-12">
-                <div class="alert alert-danger" role="alert">
-                    <?= session()->getFlashdata('error-msg'); ?>
+                <div class="alert alert-danger alert-dismissible show fade" role="alert">
+
+                    <div class="alert-body">
+                        <button class="close" data-dismiss>x</button>
+                        <b><i class="fa fa-times"></i></b>
+                        <?= session()->getFlashdata('error-msg'); ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -126,8 +131,10 @@
                         <input type="hidden" name="id" id="user_id">
                         <div class="form-group">
                             <label for="passwordLama">Password Lama</label>
-                            <input type="password" name="passwordLama" id="passwordLama" class="form-control" placeholder="Masukkan password saat ini" autocomplete="false">
-                            <div class="invalid-feedback"></div>
+                            <input type="password" name="passwordLama" id="passwordLama" class="form-control <?= $validation->hasError('passwordLama') ? 'is-invalid' : ''; ?>" value="<?= old('passwordLama'); ?>" placeholder="Masukkan password saat ini" autocomplete="false">
+                            <div class="invalid-feedback">
+                                <?= $validation->getError('passwordLama'); ?>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="passwordBaru">Password Baru</label>

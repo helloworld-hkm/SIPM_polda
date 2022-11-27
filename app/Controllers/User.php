@@ -6,6 +6,8 @@ use App\Models\Pengaduan;
 use App\Models\bukti;
 use App\Models\profil;
 use CodeIgniter\Database\Query;
+use Myth\Auth\Entities\passwd;
+use Myth\Auth\Models\UserModel;
 
 class User extends BaseController
 {
@@ -45,6 +47,35 @@ class User extends BaseController
         ];
         // dd($data);
         return view('user/profil/home', $data);
+    }
+    public function updatePassword($id)
+    {
+        $passwordLama = $this->request->getPost('passwordLama');
+        $passwordbaru = $this->request->getPost('passwordBaru');
+        $konfirm = $this->request->getPost('konfirm');
+        if ($passwordbaru != $konfirm) {
+            session()->setFlashdata('error-msg', 'Password Baru tidak sesuai');
+            return redirect()->to(base_url('admin/tentang/' . $id));
+        }
+
+        $builder = $this->db->table('users');
+        $this->builder->where('id', user()->id);
+        $query = $this->builder->get()->getRow();
+        $verify_pass = password_verify(base64_encode(hash('sha384', $passwordLama, true)), $query->password_hash);
+
+        // dd($passwordbaru);
+        if ($verify_pass) {
+            $users = model(UserModel::class);
+            $entity = new passwd();
+            $entity->setPassword($passwordbaru);
+            $hash  = $entity->password_hash;
+            $users->update($id, ['password_hash' => $hash]);
+            session()->setFlashdata('msg', 'Password berhasil Diubah');
+            return redirect()->to('/user/tentang/' . $id);
+        } else {
+            session()->setFlashdata('error-msg', 'Password Lama tidak sesuai');
+            return redirect()->to(base_url('user/tentang/' . $id));
+        }
     }
 
     public function tentang()

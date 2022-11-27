@@ -7,6 +7,8 @@ use App\Models\bukti;
 use App\Models\user;
 use App\Models\balasan;
 use App\Models\profil;
+use Myth\Auth\Entities\passwd;
+use Myth\Auth\Models\UserModel;
 
 
 class Admin extends BaseController
@@ -65,6 +67,7 @@ class Admin extends BaseController
         $data = [
             'user' => $query->getRow(),
             'title' => 'Profile',
+            'validation' => $this->validation,
             'role' => $role_echo
         ];
         return view('admin/profile', $data);
@@ -157,20 +160,30 @@ class Admin extends BaseController
 
     public function updatePassword($id)
     {
+
+
+
         $passwordLama = $this->request->getPost('passwordLama');
         $passwordbaru = $this->request->getPost('passwordBaru');
         $konfirm = $this->request->getPost('konfirm');
-        $builder = $this->db->table('user');
 
-        $this->builder->where('id', $id);
+        if ($passwordbaru != $konfirm) {
+            session()->setFlashdata('error-msg', 'Password Baru tidak sesuai');
+            return redirect()->to(base_url('admin/tentang/' . $id));
+        }
+        $builder = $this->db->table('users');
+        $this->builder->where('id', user()->id);
         $query = $this->builder->get()->getRow();
-        $verify_pass = password_verify($passwordLama, $query->password_hash);
+        $verify_pass = password_verify(base64_encode(hash('sha384', $passwordLama, true)), $query->password_hash);
+
+        // dd($query);
         if ($verify_pass) {
-            $data = [
-                'password' => password_hash($passwordbaru, PASSWORD_DEFAULT),
-            ];
-            $this->user->update($id, $data);
-            session()->setFlashdata('success', 'Password berhasil Diubah');
+            $users = model(UserModel::class);
+            $entity = new passwd();
+            $entity->setPassword($passwordbaru);
+            $hash  = $entity->password_hash;
+            $users->update($id, ['password_hash' => $hash]);
+            session()->setFlashdata('msg', 'Password berhasil Diubah');
             return redirect()->to('/admin/tentang/' . $id);
         } else {
             session()->setFlashdata('error-msg', 'Password Lama tidak sesuai');

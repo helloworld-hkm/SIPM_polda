@@ -2,7 +2,35 @@
 
 <?= $this->section('content') ?>
 <div class="container-fluid">
+    <?php if (session()->getFlashdata('error-msg')) : ?>
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-danger alert-dismissible show fade" role="alert">
 
+                    <div class="alert-body">
+                        <button class="close" data-dismiss>x</button>
+                        <b><i class="fa fa-check"></i></b>
+                        <?= session()->getFlashdata('error-msg'); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('msg')) : ?>
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-success alert-dismissible show fade" role="alert">
+
+                    <div class="alert-body">
+                        <button class="close" data-dismiss>x</button>
+                        <b><i class="fa fa-check"></i></b>
+                        <?= session()->getFlashdata('msg'); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
     <div class="row">
         <div class="col-12">
 
@@ -90,23 +118,25 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="">
+                <form action="/user/updatePassword/<?= user()->id ?>" method="post">
                     <div class="modal-body">
                         <?= csrf_field(); ?>
                         <input type="hidden" name="id" id="user_id">
                         <div class="form-group">
-                            <label for="password">Password Lama</label>
-                            <input type="password" name="current-password" id="current-password" class="form-control" placeholder="Masukkan password saat ini" autocomplete="false">
+                            <label for="passwordLama">Password Lama no</label>
+                            <input type="password" name="passwordLama" id="passwordLama" class="form-control <?= $validation->hasError('passwordLama') ? 'is-invalid' : ''; ?>" value="<?= old('passwordLama'); ?>" placeholder="Masukkan password saat ini" autocomplete="false">
+                            <div class="invalid-feedback">
+                                <?= $validation->getError('passwordLama'); ?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="passwordBaru">Password Baru</label>
+                            <input type="password" name="passwordBaru" id="passwordBaru" class="form-control" placeholder="Masukkan password baru" autocomplete="false">
                             <div class="invalid-feedback"></div>
                         </div>
                         <div class="form-group">
-                            <label for="password">Password Baru</label>
-                            <input type="password" name="new-password" id="new-password" class="form-control" placeholder="Masukkan password baru" autocomplete="false">
-                            <div class="invalid-feedback"></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Konfirmasi Password</label>
-                            <input type="password" name="confirm-password" id="confirm-password" class="form-control" placeholder="Konfirmasi password baru" autocomplete="false">
+                            <label for="konfirm">Konfirmasi Password</label>
+                            <input type="password" name="konfirm" id="konfirm" class="form-control" placeholder="Konfirmasi password baru" autocomplete="false">
                             <div class="invalid-feedback"></div>
                         </div>
                     </div>
