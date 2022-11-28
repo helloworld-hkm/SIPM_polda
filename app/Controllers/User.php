@@ -252,7 +252,11 @@ class User extends BaseController
         $pengaduan_id = $this->pengaduan->insertID(); // last insert id
         $img_dua = (array_key_exists(1, $files) ? $files[1] : 'null');
         $img_tiga = (array_key_exists(2, $files) ? $files[2] : 'null');
-
+        foreach ($images as $i => $img) {
+            if ($img->isValid() && !$img->hasMoved()) {
+                $files[$i] = 'bukti' . $i . '-' . $pengaduan_id . user()->username . '.' . $img->guessExtension();
+            }
+        }
         $this->bukti->save([
             'pengaduan_id' => $pengaduan_id,
             'img_satu' => $files[0],
