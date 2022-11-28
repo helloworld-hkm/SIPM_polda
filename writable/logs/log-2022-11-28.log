@@ -84,3 +84,15 @@ CRITICAL - 2022-11-28 00:40:07 --> required  is not a valid rule.
 #7 C:\xampp\htdocs\SIPM_polda\public\index.php(37): CodeIgniter\CodeIgniter->run()
 #8 C:\xampp\htdocs\SIPM_polda\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
 #9 {main}
+CRITICAL - 2022-11-28 10:36:20 --> Undefined variable: validation
+#0 C:\xampp\htdocs\SIPM_polda\app\Views\user\profil\index.php(127): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 127, Array)
+#1 C:\xampp\htdocs\SIPM_polda\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\SIPM_polda\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\SIPM_polda\system\Common.php(1089): CodeIgniter\View\View->render('user/profil/ind...', Array, true)
+#4 C:\xampp\htdocs\SIPM_polda\app\Controllers\User.php(106): view('user/profil/ind...', Array)
+#5 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(832): App\Controllers\User->tentang()
+#6 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 C:\xampp\htdocs\SIPM_polda\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\SIPM_polda\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\SIPM_polda\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}

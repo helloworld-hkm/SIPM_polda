@@ -124,9 +124,9 @@
                         <input type="hidden" name="id" id="user_id">
                         <div class="form-group">
                             <label for="passwordLama">Password Lama no</label>
-                            <input type="password" name="passwordLama" id="passwordLama" class="form-control <?= $validation->hasError('passwordLama') ? 'is-invalid' : ''; ?>" value="<?= old('passwordLama'); ?>" placeholder="Masukkan password saat ini" autocomplete="false">
+                            <input type="password" name="passwordLama" id="passwordLama" class="form-control " placeholder="Masukkan password saat ini" autocomplete="false">
                             <div class="invalid-feedback">
-                                <?= $validation->getError('passwordLama'); ?>
+
                             </div>
                         </div>
                         <div class="form-group">
