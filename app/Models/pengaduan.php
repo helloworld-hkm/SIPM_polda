@@ -18,4 +18,10 @@ class Pengaduan extends Model
         }
         return $this->where(['id' => $id])->first();
     }
+
+    public function getAll()
+    {
+        $query = $this->table('pengaduan')->query('select * from pengaduan');
+        return $query->getResult();
+    }
 }

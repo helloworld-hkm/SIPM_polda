@@ -435,4 +435,34 @@ class User extends BaseController
         session()->setFlashdata('msg', 'Pengaduan berhasil diubah.');
         return redirect()->to('user/pengaduan');
     }
+
+    public function print()
+    {
+        $data = [
+            'pengaduan' => $this->pengaduan->getAll(),
+            'title' => 'Cetak Data'
+        ];
+        return view('user/pengaduan/print', $data);
+    }
+    public function ekspor($id)
+    {
+        $aduan = $this->pengaduan->where(['id' => $id])->first();
+        $id = $id;
+        $data['detail']   = $aduan;
+        $data['title']   = 'cetak';
+
+
+        //Cetak dengan dompdf
+        $dompdf = new \Dompdf\Dompdf();
+        $options = new \Dompdf\Options();
+        $options->setIsRemoteEnabled(true);
+
+        $dompdf->setOptions($options);
+        $dompdf->output();
+        $dompdf->loadHtml(view('user/pengaduan/cetak', $data));
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        $dompdf->stream('Isian Data Ormas.pdf', array("Attachment" => false));
+        ini_set('max_execution_time', 0);
+    }
 }

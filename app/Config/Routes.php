@@ -37,6 +37,8 @@ $routes->put('/user/detail/(:num)', 'user::detail/$1', ['filter' => 'role:user']
 $routes->put('/user/profile/(:num)', 'user::profile/$1', ['filter' => 'role:user']);
 $routes->put('/user/tentang/(:num)', 'user::tentang/$1', ['filter' => 'role:user']);
 $routes->put('/user/ubah/simpanProfile/(:num)', 'user::simpanProfile/$1', ['filter' => 'role:user']);
+$routes->put('/user/cetakdata/(:num)', 'user::cetakdata/$1', ['filter' => 'role:user']);
+
 
 $routes->get('/user/pengaduan', 'User::pengaduan', ['filter' => 'role:user']);
 $routes->get('/user/simpanPengaduan', 'User::simpanPengaduan', ['filter' => 'role:user']);

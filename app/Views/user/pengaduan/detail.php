@@ -38,7 +38,7 @@
           <button class="btn btn-primary float-right ml-2 " type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
             <i class="fa fa-eye rounded-cyrcle"></i> Timeline
           </button>
-          <a href="/user/pengaduan" class="text-light btn btn-success font-weight-bold float-right"><i class="fa fa-print"></i> print</a>
+          <a href="<?php echo base_url('user/ekspor/' . $detail->id); ?>" class="text-light btn btn-success font-weight-bold float-right" target="blank"><i class="fa fa-print"></i> print</a>
         </div>
         <!-- <div class="card-header">
                     <h3 ></h3>

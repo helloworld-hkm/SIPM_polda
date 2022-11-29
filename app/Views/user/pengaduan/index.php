@@ -35,6 +35,7 @@
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <a href="/user/tambah" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Pengaduan Baru</a>
+                    <a href="<?php echo base_url('user/print/'); ?>" class="btn btn-success" target="blank"><i class="fa fa-file"></i> Cetak Pengaduan </a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
