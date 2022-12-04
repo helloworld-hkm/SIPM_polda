@@ -1,7 +1,8 @@
 <?php
 /**
  * @package dompdf
- * @link    https://github.com/dompdf/dompdf
+ * @link    http://dompdf.github.com/
+ * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
 namespace Dompdf\Frame;
@@ -23,6 +24,7 @@ use Dompdf\Positioner\AbstractPositioner;
  * objects.  This is determined primarily by the Frame's display type, but
  * also by the Frame's node's type (e.g. DomElement vs. #text)
  *
+ * @access  private
  * @package dompdf
  */
 class Factory
@@ -188,7 +190,7 @@ class Factory
 
         // Handle nodeName
         if ($node->nodeName === "img") {
-            $style->set_prop("display", "-dompdf-image");
+            $style->display = "-dompdf-image";
             $decorator = "Image";
             $reflower = "Image";
         }
@@ -214,7 +216,8 @@ class Factory
 
             $node = $frame->get_node();
             $parent_node = $node->parentNode;
-            if ($parent_node && $parent_node instanceof \DOMElement) {
+
+            if ($parent_node) {
                 if (!$parent_node->hasAttribute("dompdf-children-count")) {
                     $xpath = new DOMXPath($xml);
                     $count = $xpath->query("li", $parent_node)->length;
@@ -236,7 +239,7 @@ class Factory
             }
 
             $new_style = $dompdf->getCss()->create_style();
-            $new_style->set_prop("display", "-dompdf-list-bullet");
+            $new_style->display = "-dompdf-list-bullet";
             $new_style->inherit($style);
             $b_f->set_style($new_style);
 

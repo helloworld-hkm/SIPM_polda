@@ -442,18 +442,32 @@ class User extends BaseController
             'pengaduan' => $this->pengaduan->getAll(),
             'title' => 'Cetak Data'
         ];
-        return view('user/pengaduan/print', $data);
+
+        $dompdf = new \Dompdf\Dompdf();
+        $options = new \Dompdf\Options();
+        $options->setIsRemoteEnabled(true);
+
+        $dompdf->setOptions($options);
+        $dompdf->output();
+        $dompdf->loadHtml(view('user/pengaduan/print', $data));
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        ini_set('max_execution_time', 0);
+        $dompdf->stream('Data.pdf', array("Attachment" => false));
     }
     public function ekspor($id)
     {
-        $aduan = $this->pengaduan->where(['id' => $id])->first();
-        $id = $id;
-        $data['detail']   = $aduan;
+        // $aduan = $this->pengaduan->where(['id' => $id])->first();
+        // $id = $id;
+        // $data['detail']   = $aduan;
         $data['title']   = 'cetak';
+        $data['detail'] = $this->pengaduan->where(['id' => $id])->first();
+
 
 
         //Cetak dengan dompdf
         $dompdf = new \Dompdf\Dompdf();
+        ini_set('max_execution_time', 0);
         $options = new \Dompdf\Options();
         $options->setIsRemoteEnabled(true);
 
@@ -462,7 +476,6 @@ class User extends BaseController
         $dompdf->loadHtml(view('user/pengaduan/cetak', $data));
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
-        $dompdf->stream('Isian Data Ormas.pdf', array("Attachment" => false));
-        ini_set('max_execution_time', 0);
+        $dompdf->stream('Detail Pengaduan.pdf', array("Attachment" => false));
     }
 }
